@@ -28,6 +28,9 @@
                         <segment title="First"/>
                         <segment title="Second"/>
                     </segments>
+                    <connections>
+                        <action selector="tapSegment:" destination="-1" eventType="valueChanged" id="HyD-wA-Urf"/>
+                    </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-Ej-jtC">
                     <rect key="frame" x="0.0" y="50" width="375" height="2"/>

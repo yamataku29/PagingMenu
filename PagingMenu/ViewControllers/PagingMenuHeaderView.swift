@@ -14,7 +14,9 @@ class PagingMenuHeaderView: UIView {
     @IBOutlet private weak var barLeftLeading: NSLayoutConstraint!
     @IBOutlet private weak var barWidth: NSLayoutConstraint!
     
-    
+    @IBAction func tapSegment(_ sender: UISegmentedControl) {
+        movingBarView()
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
@@ -33,11 +35,17 @@ class PagingMenuHeaderView: UIView {
 }
 
 private extension PagingMenuHeaderView {
+    func movingBarView() {
+        barLeftLeading.constant = segmentControl.segmentWidth * segmentControl.selectedSegmentIndex.toCGFloat
+        UIView.animate(withDuration: 0.15, animations: {
+            self.layoutIfNeeded()
+        })
+    }
+    
     func setMoveBarView(color: UIColor) {
         moveBarView.backgroundColor = color
         barWidth.constant = segmentControl.segmentWidth
-        barLeftLeading.constant = segmentControl.segmentWidth * segmentControl.selectedSegmentIndex.toCGFloat
-        layoutIfNeeded()
+        movingBarView()
     }
     
     func loadNib() {
