@@ -9,11 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var segmentControlHeaderView: PagingSegmentControlView!
+    @IBOutlet weak var pagingMenuHeaderView: PagingMenuHeaderView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmentControlHeaderView.setSegment(titles: ["Title1", "Title2"])
+        pagingMenuHeaderView.config(titles: ["Title1", "Title2"])
     }
 }
 

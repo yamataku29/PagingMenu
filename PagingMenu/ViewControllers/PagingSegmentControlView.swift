@@ -13,6 +13,10 @@ class PagingSegmentControlView: UISegmentedControl {
     @IBInspectable private var selectedColor: UIColor = .black
     @IBInspectable private var nonSelectedColor: UIColor = .gray
     
+    var segmentWidth: CGFloat {
+        return bounds.width / numberOfSegments.toCGFloat
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()

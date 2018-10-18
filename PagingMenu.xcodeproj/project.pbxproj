@@ -15,6 +15,7 @@
 		3144CE9A2178183A00F6F6A8 /* PagingMenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */; };
 		3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */; };
 		3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */; };
+		3151989E217850FC002C443D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151989D217850FC002C443D /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagingMenuHeaderView.xib; sourceTree = "<group>"; };
 		3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuHeaderView.swift; sourceTree = "<group>"; };
 		3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSegmentControlView.swift; sourceTree = "<group>"; };
+		3151989D217850FC002C443D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				3144CE872178169100F6F6A8 /* AppDelegate.swift */,
+				3151989C217850E4002C443D /* Util */,
 				3144CE9D21781B2200F6F6A8 /* ViewControllers */,
 				3144CE9C21781B1300F6F6A8 /* Views */,
 				3144CE9B2178184F00F6F6A8 /* Resources */,
@@ -95,6 +98,14 @@
 				3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3151989C217850E4002C443D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3151989D217850FC002C443D /* Extensions.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3151989E217850FC002C443D /* Extensions.swift in Sources */,
 				3144CE8A2178169100F6F6A8 /* ViewController.swift in Sources */,
 				3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */,
 				3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */,
