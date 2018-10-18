@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PagingMenuHeaderViewDelegate: class {
+    func selectedSegment(index: Int)
+}
+
 class PagingMenuHeaderView: UIView {
     @IBOutlet private weak var segmentControl: PagingSegmentControlView!
     @IBOutlet private weak var moveBarView: UIView!
@@ -15,8 +19,12 @@ class PagingMenuHeaderView: UIView {
     @IBOutlet private weak var barWidth: NSLayoutConstraint!
     
     @IBAction func tapSegment(_ sender: UISegmentedControl) {
+        delegate?.selectedSegment(index: sender.selectedSegmentIndex)
         movingBarView()
     }
+    
+    private weak var delegate: PagingMenuHeaderViewDelegate?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
@@ -27,7 +35,9 @@ class PagingMenuHeaderView: UIView {
         loadNib()
     }
     
-    func config(titles: [String], select index: Int = 0, moveBarColor: UIColor = .red) {
+    func configure(delegate: PagingMenuHeaderViewDelegate, titles: [String],
+                   select index: Int = 0, moveBarColor: UIColor = .red) {
+        self.delegate = delegate
         segmentControl.setSegment(titles: titles)
         segmentControl.selectedSegmentIndex = index
         setMoveBarView(color: moveBarColor)

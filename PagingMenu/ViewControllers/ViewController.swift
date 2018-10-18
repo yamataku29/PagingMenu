@@ -13,7 +13,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pagingMenuHeaderView.config(titles: ["Title1", "Title2"])
+        pagingMenuHeaderView.configure(delegate: self, titles: ["Title1", "Title2"])
     }
 }
 
+extension ViewController: PagingMenuHeaderViewDelegate {
+    func selectedSegment(index: Int) {}
+}
