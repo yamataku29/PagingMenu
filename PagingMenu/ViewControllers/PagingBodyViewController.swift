@@ -9,8 +9,17 @@
 import UIKit
 
 class PagingBodyViewController: UIViewController {
-
+    @IBOutlet private weak var horizontalStackView: UIStackView!
+    private var container: [UIViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        container.forEach { viewController in
+            horizontalStackView.addArrangedSubview(viewController.view)
+        }
+    }
+    
+    func configure(with container: [UIViewController]) {
+        self.container = container
     }
 }

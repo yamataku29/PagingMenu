@@ -18,6 +18,10 @@
 		3151989E217850FC002C443D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151989D217850FC002C443D /* Extensions.swift */; };
 		315198A021785F0C002C443D /* PagingBodyView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3151989F21785F0C002C443D /* PagingBodyView.storyboard */; };
 		315198A221785F26002C443D /* PagingBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A121785F26002C443D /* PagingBodyViewController.swift */; };
+		315198A42178628F002C443D /* ChildViewController1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 315198A32178628F002C443D /* ChildViewController1.storyboard */; };
+		315198A6217862AB002C443D /* ChildViewController2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 315198A5217862AB002C443D /* ChildViewController2.storyboard */; };
+		315198A8217862C9002C443D /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A7217862C9002C443D /* ChildViewController1.swift */; };
+		315198AA217862D7002C443D /* ChildViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A9217862D6002C443D /* ChildViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		3151989D217850FC002C443D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3151989F21785F0C002C443D /* PagingBodyView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PagingBodyView.storyboard; sourceTree = "<group>"; };
 		315198A121785F26002C443D /* PagingBodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingBodyViewController.swift; sourceTree = "<group>"; };
+		315198A32178628F002C443D /* ChildViewController1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChildViewController1.storyboard; sourceTree = "<group>"; };
+		315198A5217862AB002C443D /* ChildViewController2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChildViewController2.storyboard; sourceTree = "<group>"; };
+		315198A7217862C9002C443D /* ChildViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
+		315198A9217862D6002C443D /* ChildViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,8 @@
 				3144CE902178169200F6F6A8 /* LaunchScreen.storyboard */,
 				3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */,
 				3151989F21785F0C002C443D /* PagingBodyView.storyboard */,
+				315198A32178628F002C443D /* ChildViewController1.storyboard */,
+				315198A5217862AB002C443D /* ChildViewController2.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -102,6 +112,8 @@
 				3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */,
 				3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */,
 				315198A121785F26002C443D /* PagingBodyViewController.swift */,
+				315198A7217862C9002C443D /* ChildViewController1.swift */,
+				315198A9217862D6002C443D /* ChildViewController2.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -172,8 +184,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315198A6217862AB002C443D /* ChildViewController2.storyboard in Resources */,
 				3144CE9A2178183A00F6F6A8 /* PagingMenuHeaderView.xib in Resources */,
 				3144CE922178169200F6F6A8 /* LaunchScreen.storyboard in Resources */,
+				315198A42178628F002C443D /* ChildViewController1.storyboard in Resources */,
 				315198A021785F0C002C443D /* PagingBodyView.storyboard in Resources */,
 				3144CE8F2178169200F6F6A8 /* Assets.xcassets in Resources */,
 				3144CE8D2178169100F6F6A8 /* Main.storyboard in Resources */,
@@ -188,6 +202,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3151989E217850FC002C443D /* Extensions.swift in Sources */,
+				315198A8217862C9002C443D /* ChildViewController1.swift in Sources */,
+				315198AA217862D7002C443D /* ChildViewController2.swift in Sources */,
 				3144CE8A2178169100F6F6A8 /* ViewController.swift in Sources */,
 				3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */,
 				3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */,

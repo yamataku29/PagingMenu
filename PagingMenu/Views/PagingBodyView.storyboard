@@ -48,6 +48,9 @@
                         <viewLayoutGuide key="safeArea" id="rOj-ty-9RS"/>
                     </view>
                     <size key="freeformSize" width="375" height="597"/>
+                    <connections>
+                        <outlet property="horizontalStackView" destination="B8O-6m-cU1" id="gPq-N5-ahz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ito-b0-ZzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
