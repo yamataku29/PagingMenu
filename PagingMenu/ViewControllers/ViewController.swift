@@ -9,12 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var segmentControlHeaderView: PagingSegmentControlView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        segmentControlHeaderView.setSegment(titles: ["Title1", "Title2"])
     }
-
-
 }
 

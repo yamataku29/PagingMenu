@@ -13,7 +13,7 @@
 		3144CE8F2178169200F6F6A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3144CE8E2178169200F6F6A8 /* Assets.xcassets */; };
 		3144CE922178169200F6F6A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3144CE902178169200F6F6A8 /* LaunchScreen.storyboard */; };
 		3144CE9A2178183A00F6F6A8 /* PagingMenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */; };
-		3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderViewController.swift */; };
+		3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */; };
 		3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		3144CE912178169200F6F6A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3144CE932178169200F6F6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagingMenuHeaderView.xib; sourceTree = "<group>"; };
-		3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuHeaderViewController.swift; sourceTree = "<group>"; };
+		3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuHeaderView.swift; sourceTree = "<group>"; };
 		3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSegmentControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +63,6 @@
 				3144CE872178169100F6F6A8 /* AppDelegate.swift */,
 				3144CE9D21781B2200F6F6A8 /* ViewControllers */,
 				3144CE9C21781B1300F6F6A8 /* Views */,
-				3144CEA321781BDE00F6F6A8 /* IBs */,
 				3144CE9B2178184F00F6F6A8 /* Resources */,
 			);
 			path = PagingMenu;
@@ -81,7 +80,9 @@
 		3144CE9C21781B1300F6F6A8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */,
+				3144CE8B2178169100F6F6A8 /* Main.storyboard */,
+				3144CE902178169200F6F6A8 /* LaunchScreen.storyboard */,
+				3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -90,19 +91,10 @@
 			isa = PBXGroup;
 			children = (
 				3144CE892178169100F6F6A8 /* ViewController.swift */,
-				3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderViewController.swift */,
+				3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */,
+				3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		3144CEA321781BDE00F6F6A8 /* IBs */ = {
-			isa = PBXGroup;
-			children = (
-				3144CE8B2178169100F6F6A8 /* Main.storyboard */,
-				3144CE902178169200F6F6A8 /* LaunchScreen.storyboard */,
-				3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */,
-			);
-			path = IBs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,7 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3144CE8A2178169100F6F6A8 /* ViewController.swift in Sources */,
-				3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderViewController.swift in Sources */,
+				3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */,
 				3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */,
 				3144CE882178169100F6F6A8 /* AppDelegate.swift in Sources */,
 			);
@@ -328,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8JEHPP3L74;
-				INFOPLIST_FILE = PagingMenu/Info.plist;
+				INFOPLIST_FILE = PagingMenu/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -346,7 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8JEHPP3L74;
-				INFOPLIST_FILE = PagingMenu/Info.plist;
+				INFOPLIST_FILE = PagingMenu/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

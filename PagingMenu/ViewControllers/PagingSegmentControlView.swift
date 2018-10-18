@@ -9,16 +9,26 @@
 import UIKit
 
 class PagingSegmentControlView: UISegmentedControl {
-    @IBInspectable var fontSize: CGFloat = 13
-    @IBInspectable var selectedColor: UIColor = .black
-    @IBInspectable var nonSelectedColor: UIColor = .gray
+    @IBInspectable private var fontSize: CGFloat = 13
+    @IBInspectable private var selectedColor: UIColor = .black
+    @IBInspectable private var nonSelectedColor: UIColor = .gray
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }
     
-    private func setup() {
+    func setSegment(titles: [String]) {
+        removeAllSegments()
+        titles.forEach { title in
+            insertSegment(withTitle: title, at: numberOfSegments, animated: false)
+        }
+        selectedSegmentIndex = 0
+    }
+}
+
+private extension PagingSegmentControlView {
+    func setup() {
         layer.borderWidth = 0.0
         layer.cornerRadius = 0.0
         tintColor = UIColor.clear
