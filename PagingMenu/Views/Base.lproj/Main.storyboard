@@ -24,11 +24,21 @@
                                     <constraint firstAttribute="height" constant="50" id="dgw-2O-8hs"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1o-z7-de3">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <connections>
+                                    <segue destination="OBG-sJ-NEq" kind="embed" id="cHG-L7-d8y"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="f1o-z7-de3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="509-qU-qgQ"/>
+                            <constraint firstItem="f1o-z7-de3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Bun-LG-PKB"/>
                             <constraint firstItem="rr5-vP-hNB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IoW-Dc-aYY"/>
+                            <constraint firstItem="f1o-z7-de3" firstAttribute="top" secondItem="rr5-vP-hNB" secondAttribute="bottom" id="LjD-Lb-1Vi"/>
                             <constraint firstItem="rr5-vP-hNB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XnE-fC-8zO"/>
+                            <constraint firstItem="f1o-z7-de3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YAY-kW-hK0"/>
                             <constraint firstItem="rr5-vP-hNB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p6D-bi-5Gk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -40,6 +50,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="92.203898050974516"/>
+        </scene>
+        <!--PagingBodyView-->
+        <scene sceneID="XDg-po-VSr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PagingBodyView" id="OBG-sJ-NEq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZK-cL-gGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="92"/>
         </scene>
     </scenes>
 </document>

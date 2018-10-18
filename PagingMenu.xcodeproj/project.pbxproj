@@ -16,6 +16,8 @@
 		3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */; };
 		3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */; };
 		3151989E217850FC002C443D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151989D217850FC002C443D /* Extensions.swift */; };
+		315198A021785F0C002C443D /* PagingBodyView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3151989F21785F0C002C443D /* PagingBodyView.storyboard */; };
+		315198A221785F26002C443D /* PagingBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A121785F26002C443D /* PagingBodyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuHeaderView.swift; sourceTree = "<group>"; };
 		3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSegmentControlView.swift; sourceTree = "<group>"; };
 		3151989D217850FC002C443D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3151989F21785F0C002C443D /* PagingBodyView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PagingBodyView.storyboard; sourceTree = "<group>"; };
+		315198A121785F26002C443D /* PagingBodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingBodyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 				3144CE8B2178169100F6F6A8 /* Main.storyboard */,
 				3144CE902178169200F6F6A8 /* LaunchScreen.storyboard */,
 				3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */,
+				3151989F21785F0C002C443D /* PagingBodyView.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 				3144CE892178169100F6F6A8 /* ViewController.swift */,
 				3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */,
 				3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */,
+				315198A121785F26002C443D /* PagingBodyViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -168,6 +174,7 @@
 			files = (
 				3144CE9A2178183A00F6F6A8 /* PagingMenuHeaderView.xib in Resources */,
 				3144CE922178169200F6F6A8 /* LaunchScreen.storyboard in Resources */,
+				315198A021785F0C002C443D /* PagingBodyView.storyboard in Resources */,
 				3144CE8F2178169200F6F6A8 /* Assets.xcassets in Resources */,
 				3144CE8D2178169100F6F6A8 /* Main.storyboard in Resources */,
 			);
@@ -184,6 +191,7 @@
 				3144CE8A2178169100F6F6A8 /* ViewController.swift in Sources */,
 				3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */,
 				3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */,
+				315198A221785F26002C443D /* PagingBodyViewController.swift in Sources */,
 				3144CE882178169100F6F6A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

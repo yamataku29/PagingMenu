@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gKu-bs-We1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Paging Body View Controller-->
+        <scene sceneID="ZDa-Xf-HnI">
+            <objects>
+                <viewController id="gKu-bs-We1" customClass="PagingBodyViewController" customModule="PagingMenu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EKo-EE-vKr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bW1-bn-xIl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8O-6m-cU1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" placeholder="YES" id="MEi-5E-YBW"/>
+                                            <constraint firstAttribute="height" constant="597" placeholder="YES" id="cpD-4p-x7s"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="B8O-6m-cU1" firstAttribute="leading" secondItem="bW1-bn-xIl" secondAttribute="leading" id="1eU-WJ-HAI"/>
+                                    <constraint firstAttribute="trailing" secondItem="B8O-6m-cU1" secondAttribute="trailing" id="a60-Bv-ugD"/>
+                                    <constraint firstAttribute="bottom" secondItem="B8O-6m-cU1" secondAttribute="bottom" id="vOM-m5-pgg"/>
+                                    <constraint firstItem="B8O-6m-cU1" firstAttribute="top" secondItem="bW1-bn-xIl" secondAttribute="top" id="w1g-ky-IHR"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bW1-bn-xIl" secondAttribute="bottom" id="3uI-yA-Wbq"/>
+                            <constraint firstAttribute="trailing" secondItem="bW1-bn-xIl" secondAttribute="trailing" id="805-YX-S17"/>
+                            <constraint firstItem="bW1-bn-xIl" firstAttribute="top" secondItem="EKo-EE-vKr" secondAttribute="top" id="DFt-ay-BIb"/>
+                            <constraint firstItem="B8O-6m-cU1" firstAttribute="top" secondItem="EKo-EE-vKr" secondAttribute="top" id="FLh-cK-CeP"/>
+                            <constraint firstItem="bW1-bn-xIl" firstAttribute="leading" secondItem="EKo-EE-vKr" secondAttribute="leading" id="cc2-5Y-Bku"/>
+                            <constraint firstAttribute="bottom" secondItem="B8O-6m-cU1" secondAttribute="bottom" id="e4c-dZ-aTs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rOj-ty-9RS"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="597"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ito-b0-ZzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-207.19999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+</document>
