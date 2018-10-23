@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol PagingBodyViewControllerDelegate: class {
+    func didEndScrolling(index: Int)
+}
+
 class PagingBodyViewController: UIViewController {
-    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollView: PagingenabledScrollview!
     
+    private weak var delegate: PagingBodyViewControllerDelegate?
     private var container: [UIViewController] = []
     
     override func viewDidLoad() {
@@ -20,8 +25,9 @@ class PagingBodyViewController: UIViewController {
                                         height: scrollView.frame.height)
     }
     
-    func preset(with container: [UIViewController]) {
+    func preset(with container: [UIViewController], delegate: PagingBodyViewControllerDelegate) {
         self.container = container
+        self.delegate = delegate
     }
 }
 
@@ -35,5 +41,17 @@ private extension PagingBodyViewController {
             scrollView.addSubview(viewController.view)
             viewController.didMove(toParent: self)
         }
+    }
+}
+
+extension PagingBodyViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard !decelerate, let pagingenabledScrollview = scrollView as? PagingenabledScrollview else { return }
+        delegate?.didEndScrolling(index: pagingenabledScrollview.currentPage)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let pagingenabledScrollview = scrollView as? PagingenabledScrollview else { return }
+        delegate?.didEndScrolling(index: pagingenabledScrollview.currentPage)
     }
 }

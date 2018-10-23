@@ -25,10 +25,14 @@ class ViewController: UIViewController {
         let storyboard2 = UIStoryboard(name: "ChildViewController2", bundle: Bundle(for: ChildViewController2.self))
         let viewController2 = storyboard2.instantiateInitialViewController()
         
-        pagingBodyViewController.preset(with: [viewController1!, viewController2!])
+        pagingBodyViewController.preset(with: [viewController1!, viewController2!], delegate: self)
     }
 }
 
 extension ViewController: PagingMenuHeaderViewDelegate {
     func selectedSegment(index: Int) {}
+}
+
+extension ViewController: PagingBodyViewControllerDelegate {
+    func didEndScrolling(index: Int) {}
 }
