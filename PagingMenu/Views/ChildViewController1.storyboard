@@ -16,7 +16,25 @@
                     <view key="view" contentMode="scaleToFill" id="STt-97-yMu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csP-1D-4fW">
+                                <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Dxu-bw-Oa8"/>
+                                    <constraint firstAttribute="width" constant="80" id="gm2-cs-tuC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Tap me!"/>
+                                <connections>
+                                    <action selector="button:" destination="UNL-Qd-WO3" eventType="touchUpInside" id="Wgc-5a-076"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="csP-1D-4fW" firstAttribute="centerY" secondItem="STt-97-yMu" secondAttribute="centerY" id="1SQ-zW-y2f"/>
+                            <constraint firstItem="csP-1D-4fW" firstAttribute="centerX" secondItem="STt-97-yMu" secondAttribute="centerX" id="dtt-jJ-Nw8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8qe-bg-eiN"/>
                     </view>
                 </viewController>

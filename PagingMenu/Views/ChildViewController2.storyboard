@@ -16,7 +16,25 @@
                     <view key="view" contentMode="scaleToFill" id="KWK-dv-fxp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-JC-dUz">
+                                <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="1Xr-Ic-F8V"/>
+                                    <constraint firstAttribute="height" constant="80" id="S5e-wu-zjB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Tap me!"/>
+                                <connections>
+                                    <action selector="button:" destination="0LX-mr-RYn" eventType="touchUpInside" id="rLt-rP-2GS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gN9-JC-dUz" firstAttribute="centerY" secondItem="KWK-dv-fxp" secondAttribute="centerY" id="0m7-PH-c3d"/>
+                            <constraint firstItem="gN9-JC-dUz" firstAttribute="centerX" secondItem="KWK-dv-fxp" secondAttribute="centerX" id="TkD-XD-Hjj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="U0I-gV-UPA"/>
                     </view>
                 </viewController>
