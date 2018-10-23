@@ -29,6 +29,11 @@ class PagingBodyViewController: UIViewController {
         self.container = container
         self.delegate = delegate
     }
+    
+    func scrollTo(_ index: Int) {
+        let offset = scrollView.getPagePosition(from: index)
+        scrollView.setContentOffset(offset, animated: true)
+    }
 }
 
 private extension PagingBodyViewController {
