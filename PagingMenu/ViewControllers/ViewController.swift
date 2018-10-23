@@ -40,5 +40,7 @@ extension ViewController: PagingMenuHeaderViewDelegate {
 }
 
 extension ViewController: PagingBodyViewControllerDelegate {
-    func didEndScrolling(index: Int) {}
+    func didEndScrolling(index: Int) {
+        pagingMenuHeaderView.moveTo(index)
+    }
 }

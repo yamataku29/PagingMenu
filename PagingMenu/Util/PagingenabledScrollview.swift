@@ -13,6 +13,10 @@ class PagingenabledScrollview: UIScrollView {
         return Int(currentCenterOffsetX / bounds.width).toIndexRow
     }
     
+    var currentPageIndex: Int {
+        return Int(currentCenterOffsetX / bounds.width)
+    }
+    
     func getPagePosition(from index: Int) -> CGPoint {
         let offsetX = index.toCGFloat * frame.width
         return CGPoint(x: offsetX, y: 0)

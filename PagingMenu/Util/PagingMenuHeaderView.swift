@@ -42,6 +42,11 @@ class PagingMenuHeaderView: UIView {
         segmentControl.selectedSegmentIndex = index
         setMoveBarView(color: moveBarColor)
     }
+    
+    func moveTo(_ index: Int) {
+        segmentControl.selectedSegmentIndex = index
+        movingBarView()
+    }
 }
 
 private extension PagingMenuHeaderView {

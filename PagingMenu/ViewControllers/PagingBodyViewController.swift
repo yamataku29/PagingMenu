@@ -23,6 +23,7 @@ class PagingBodyViewController: UIViewController {
         setSubView()
         scrollView.contentSize = CGSize(width: scrollView.frame.width * container.count.toCGFloat,
                                         height: scrollView.frame.height)
+        scrollView.delegate = self
     }
     
     func preset(with container: [UIViewController], delegate: PagingBodyViewControllerDelegate) {
@@ -52,11 +53,13 @@ private extension PagingBodyViewController {
 extension PagingBodyViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate, let pagingenabledScrollview = scrollView as? PagingenabledScrollview else { return }
-        delegate?.didEndScrolling(index: pagingenabledScrollview.currentPage)
+        delegate?.didEndScrolling(index: pagingenabledScrollview.currentPageIndex)
     }
+    
+    
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let pagingenabledScrollview = scrollView as? PagingenabledScrollview else { return }
-        delegate?.didEndScrolling(index: pagingenabledScrollview.currentPage)
+        delegate?.didEndScrolling(index: pagingenabledScrollview.currentPageIndex)
     }
 }
