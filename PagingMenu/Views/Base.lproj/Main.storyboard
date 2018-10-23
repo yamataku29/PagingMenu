@@ -34,7 +34,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="f1o-z7-de3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="509-qU-qgQ"/>
-                            <constraint firstItem="f1o-z7-de3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Bun-LG-PKB"/>
+                            <constraint firstItem="f1o-z7-de3" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="Bun-LG-PKB"/>
                             <constraint firstItem="rr5-vP-hNB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IoW-Dc-aYY"/>
                             <constraint firstItem="f1o-z7-de3" firstAttribute="top" secondItem="rr5-vP-hNB" secondAttribute="bottom" id="LjD-Lb-1Vi"/>
                             <constraint firstItem="rr5-vP-hNB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XnE-fC-8zO"/>

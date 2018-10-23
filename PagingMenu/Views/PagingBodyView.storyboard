@@ -23,6 +23,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bW1-bn-xIl" firstAttribute="bottom" secondItem="rOj-ty-9RS" secondAttribute="bottom" id="6FQ-VZ-Hhr"/>
                             <constraint firstItem="bW1-bn-xIl" firstAttribute="height" secondItem="EKo-EE-vKr" secondAttribute="height" id="lMc-yo-vHP"/>
                             <constraint firstItem="bW1-bn-xIl" firstAttribute="width" secondItem="EKo-EE-vKr" secondAttribute="width" id="os9-DK-ckv"/>
                             <constraint firstItem="bW1-bn-xIl" firstAttribute="leading" secondItem="rOj-ty-9RS" secondAttribute="leading" id="pFG-Bm-83X"/>
