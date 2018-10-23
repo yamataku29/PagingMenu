@@ -15,19 +15,25 @@ class PagingBodyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        container.enumerated().forEach { (index, viewController) in
-            setSubView(with: viewController.view, index: index)
-        }
+        setSubView()
         scrollView.contentSize = CGSize(width: scrollView.frame.width * container.count.toCGFloat,
                                         height: scrollView.frame.height)
     }
     
-    func configure(with container: [UIViewController]) {
+    func preset(with container: [UIViewController]) {
         self.container = container
     }
-    
-    func setSubView(with view: UIView, index: Int) {
-        view.bounds.origin = CGPoint(x: scrollView.frame.width * index.toCGFloat, y: 0)
-        scrollView.addSubview(view)
+}
+
+private extension PagingBodyViewController {
+    func setSubView() {
+        container.enumerated().forEach { (index, viewController) in
+            addChild(viewController)
+            viewController.view.frame = CGRect(x: view.frame.width*index.toCGFloat, y: 0,
+                                               width: viewController.view.frame.width,
+                                               height: viewController.view.frame.height)
+            scrollView.addSubview(viewController.view)
+            viewController.didMove(toParent: self)
+        }
     }
 }
