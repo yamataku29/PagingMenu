@@ -76,10 +76,10 @@
 		3144CE862178169100F6F6A8 /* PagingMenu */ = {
 			isa = PBXGroup;
 			children = (
-				3144CE872178169100F6F6A8 /* AppDelegate.swift */,
 				3151989C217850E4002C443D /* Util */,
-				3144CE9D21781B2200F6F6A8 /* ViewControllers */,
-				3144CE9C21781B1300F6F6A8 /* Views */,
+				3144CE9D21781B2200F6F6A8 /* Classes */,
+				3144CE9C21781B1300F6F6A8 /* Storyboards */,
+				31C28CDB218AD68900E86A00 /* Xibs */,
 				3144CE9B2178184F00F6F6A8 /* Resources */,
 			);
 			path = PagingMenu;
@@ -94,39 +94,72 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		3144CE9C21781B1300F6F6A8 /* Views */ = {
+		3144CE9C21781B1300F6F6A8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				3144CE8B2178169100F6F6A8 /* Main.storyboard */,
 				3144CE902178169200F6F6A8 /* LaunchScreen.storyboard */,
-				3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */,
-				3151989F21785F0C002C443D /* PagingBodyView.storyboard */,
+				3144CE8B2178169100F6F6A8 /* Main.storyboard */,
 				315198A32178628F002C443D /* ChildViewController1.storyboard */,
 				315198A5217862AB002C443D /* ChildViewController2.storyboard */,
+				31C28CDD218AD74500E86A00 /* FixedNumberPagingViews */,
 			);
+			name = Storyboards;
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3144CE9D21781B2200F6F6A8 /* ViewControllers */ = {
+		3144CE9D21781B2200F6F6A8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3144CE892178169100F6F6A8 /* ViewController.swift */,
-				315198A121785F26002C443D /* PagingBodyViewController.swift */,
+				3144CE872178169100F6F6A8 /* AppDelegate.swift */,
 				315198A7217862C9002C443D /* ChildViewController1.swift */,
 				315198A9217862D6002C443D /* ChildViewController2.swift */,
+				31C28CDC218AD73100E86A00 /* FixedNumberPagingViews */,
 			);
-			path = ViewControllers;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		3151989C217850E4002C443D /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				3151989D217850FC002C443D /* Extensions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		31C28CDB218AD68900E86A00 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				31C28CDE218AD78500E86A00 /* FixedNumberPagingViews */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		31C28CDC218AD73100E86A00 /* FixedNumberPagingViews */ = {
+			isa = PBXGroup;
+			children = (
 				3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */,
 				3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */,
 				3150CFE4217F563F00027803 /* PagingenabledScrollview.swift */,
+				3144CE892178169100F6F6A8 /* ViewController.swift */,
+				315198A121785F26002C443D /* PagingBodyViewController.swift */,
 			);
-			path = Util;
+			path = FixedNumberPagingViews;
+			sourceTree = "<group>";
+		};
+		31C28CDD218AD74500E86A00 /* FixedNumberPagingViews */ = {
+			isa = PBXGroup;
+			children = (
+				3151989F21785F0C002C443D /* PagingBodyView.storyboard */,
+			);
+			path = FixedNumberPagingViews;
+			sourceTree = "<group>";
+		};
+		31C28CDE218AD78500E86A00 /* FixedNumberPagingViews */ = {
+			isa = PBXGroup;
+			children = (
+				3144CE992178183A00F6F6A8 /* PagingMenuHeaderView.xib */,
+			);
+			path = FixedNumberPagingViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
