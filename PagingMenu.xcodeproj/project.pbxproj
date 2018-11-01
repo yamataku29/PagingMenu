@@ -27,6 +27,7 @@
 		31C28CE2218AD9AF00E86A00 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C28CE1218AD9AF00E86A00 /* MainTabBarController.swift */; };
 		31C28CEA218AE21A00E86A00 /* InfinitePagingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C28CE9218AE21A00E86A00 /* InfinitePagingViewController.xib */; };
 		31C28CEC218AEFBB00E86A00 /* InfinitePagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C28CEB218AEFBB00E86A00 /* InfinitePagingViewController.swift */; };
+		31C28CEE218AF34800E86A00 /* InfinitePagingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C28CED218AF34800E86A00 /* InfinitePagingCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		31C28CE1218AD9AF00E86A00 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		31C28CE9218AE21A00E86A00 /* InfinitePagingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfinitePagingViewController.xib; sourceTree = "<group>"; };
 		31C28CEB218AEFBB00E86A00 /* InfinitePagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePagingViewController.swift; sourceTree = "<group>"; };
+		31C28CED218AF34800E86A00 /* InfinitePagingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePagingCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				31C28CEB218AEFBB00E86A00 /* InfinitePagingViewController.swift */,
+				31C28CED218AF34800E86A00 /* InfinitePagingCollectionView.swift */,
 			);
 			path = InfinitePagingViews;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31C28CEE218AF34800E86A00 /* InfinitePagingCollectionView.swift in Sources */,
 				3151989E217850FC002C443D /* Extensions.swift in Sources */,
 				315198A8217862C9002C443D /* ChildViewController1.swift in Sources */,
 				315198AA217862D7002C443D /* ChildViewController2.swift in Sources */,
