@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FixedNumberPagingViewController.swift
 //  PagingMenu
 //
 //  Created by 山田卓 on 2018/10/18.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FixedNumberPagingViewController: UIViewController {
     @IBOutlet weak var pagingMenuHeaderView: PagingMenuHeaderView!
     
+    static let identifier = "FixedNumberPagingViewController"
     private var pagingBodyViewController: PagingBodyViewController?
     
     override func viewDidLoad() {
@@ -33,13 +34,13 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: PagingMenuHeaderViewDelegate {
+extension FixedNumberPagingViewController: PagingMenuHeaderViewDelegate {
     func selectedSegment(index: Int) {
         pagingBodyViewController?.scrollTo(index)
     }
 }
 
-extension ViewController: PagingBodyViewControllerDelegate {
+extension FixedNumberPagingViewController: PagingBodyViewControllerDelegate {
     func didEndScrolling(index: Int) {
         pagingMenuHeaderView.moveTo(index)
     }

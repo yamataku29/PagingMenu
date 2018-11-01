@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Fixed Number Paging View Controller-->
         <scene sceneID="Dyi-RD-rwP">
             <objects>
-                <viewController id="2zO-d4-9Jd" customClass="ViewController" customModule="PagingMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2zO-d4-9Jd" customClass="FixedNumberPagingViewController" customModule="PagingMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNB-UH-yxJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubA-U7-Kr8">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="547"/>
                                 <connections>
                                     <segue destination="xD5-ee-8cF" kind="embed" id="ZhH-ca-sKr"/>
                                 </connections>
@@ -38,13 +38,13 @@
                             <constraint firstItem="Ece-MY-O2w" firstAttribute="top" secondItem="4ko-tg-RDo" secondAttribute="top" id="Vsf-SO-Dnh"/>
                             <constraint firstItem="ubA-U7-Kr8" firstAttribute="top" secondItem="Ece-MY-O2w" secondAttribute="bottom" id="X3K-IW-zT3"/>
                             <constraint firstItem="ubA-U7-Kr8" firstAttribute="trailing" secondItem="4ko-tg-RDo" secondAttribute="trailing" id="fOR-3j-2Z3"/>
-                            <constraint firstItem="ubA-U7-Kr8" firstAttribute="bottom" secondItem="hNB-UH-yxJ" secondAttribute="bottom" id="kDT-fw-iok"/>
+                            <constraint firstItem="ubA-U7-Kr8" firstAttribute="bottom" secondItem="hNB-UH-yxJ" secondAttribute="bottom" constant="-50" id="kDT-fw-iok"/>
                             <constraint firstItem="Ece-MY-O2w" firstAttribute="leading" secondItem="4ko-tg-RDo" secondAttribute="leading" id="rKH-AX-Cnh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4ko-tg-RDo"/>
                     </view>
                     <connections>
-                        <outlet property="pagingMenuHeaderView" destination="Ece-MY-O2w" id="a1i-tj-mkk"/>
+                        <outlet property="pagingMenuHeaderView" destination="Ece-MY-O2w" id="cTh-5X-Zhu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fv5-4K-zzf" sceneMemberID="firstResponder"/>

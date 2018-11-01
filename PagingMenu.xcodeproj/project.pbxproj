@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3144CE882178169100F6F6A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CE872178169100F6F6A8 /* AppDelegate.swift */; };
-		3144CE8A2178169100F6F6A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CE892178169100F6F6A8 /* ViewController.swift */; };
+		3144CE8A2178169100F6F6A8 /* FixedNumberPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144CE892178169100F6F6A8 /* FixedNumberPagingViewController.swift */; };
 		3144CE8D2178169100F6F6A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3144CE8B2178169100F6F6A8 /* Main.storyboard */; };
 		3144CE8F2178169200F6F6A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3144CE8E2178169200F6F6A8 /* Assets.xcassets */; };
 		3144CE922178169200F6F6A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3144CE902178169200F6F6A8 /* LaunchScreen.storyboard */; };
@@ -24,12 +24,13 @@
 		315198A8217862C9002C443D /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A7217862C9002C443D /* ChildViewController1.swift */; };
 		315198AA217862D7002C443D /* ChildViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A9217862D6002C443D /* ChildViewController2.swift */; };
 		31C28CE0218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C28CDF218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard */; };
+		31C28CE2218AD9AF00E86A00 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C28CE1218AD9AF00E86A00 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3144CE842178169100F6F6A8 /* PagingMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3144CE872178169100F6F6A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3144CE892178169100F6F6A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3144CE892178169100F6F6A8 /* FixedNumberPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedNumberPagingViewController.swift; sourceTree = "<group>"; };
 		3144CE8C2178169100F6F6A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3144CE8E2178169200F6F6A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3144CE912178169200F6F6A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		315198A7217862C9002C443D /* ChildViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
 		315198A9217862D6002C443D /* ChildViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController2.swift; sourceTree = "<group>"; };
 		31C28CDF218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FixedNumberPagingViewController.storyboard; sourceTree = "<group>"; };
+		31C28CE1218AD9AF00E86A00 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				315198A7217862C9002C443D /* ChildViewController1.swift */,
 				315198A9217862D6002C443D /* ChildViewController2.swift */,
 				31C28CDC218AD73100E86A00 /* FixedNumberPagingViews */,
+				31C28CE1218AD9AF00E86A00 /* MainTabBarController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -142,7 +145,7 @@
 				3144CEA421781C2300F6F6A8 /* PagingSegmentControlView.swift */,
 				3144CE9E21781B5000F6F6A8 /* PagingMenuHeaderView.swift */,
 				3150CFE4217F563F00027803 /* PagingenabledScrollview.swift */,
-				3144CE892178169100F6F6A8 /* ViewController.swift */,
+				3144CE892178169100F6F6A8 /* FixedNumberPagingViewController.swift */,
 				315198A121785F26002C443D /* PagingBodyViewController.swift */,
 			);
 			path = FixedNumberPagingViews;
@@ -244,8 +247,9 @@
 				3151989E217850FC002C443D /* Extensions.swift in Sources */,
 				315198A8217862C9002C443D /* ChildViewController1.swift in Sources */,
 				315198AA217862D7002C443D /* ChildViewController2.swift in Sources */,
-				3144CE8A2178169100F6F6A8 /* ViewController.swift in Sources */,
+				3144CE8A2178169100F6F6A8 /* FixedNumberPagingViewController.swift in Sources */,
 				3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */,
+				31C28CE2218AD9AF00E86A00 /* MainTabBarController.swift in Sources */,
 				3144CEA521781C2300F6F6A8 /* PagingSegmentControlView.swift in Sources */,
 				315198A221785F26002C443D /* PagingBodyViewController.swift in Sources */,
 				3144CE882178169100F6F6A8 /* AppDelegate.swift in Sources */,

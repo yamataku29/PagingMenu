@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="gKu-bs-We1" customClass="PagingBodyViewController" customModule="PagingMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EKo-EE-vKr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bW1-bn-xIl" customClass="PagingenabledScrollview" customModule="PagingMenu" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rOj-ty-9RS"/>
                     </view>
-                    <size key="freeformSize" width="375" height="597"/>
+                    <size key="freeformSize" width="375" height="550"/>
                     <connections>
                         <outlet property="scrollView" destination="bW1-bn-xIl" id="ZqZ-Ej-cJO"/>
                     </connections>
