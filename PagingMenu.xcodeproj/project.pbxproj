@@ -23,6 +23,7 @@
 		315198A6217862AB002C443D /* ChildViewController2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 315198A5217862AB002C443D /* ChildViewController2.storyboard */; };
 		315198A8217862C9002C443D /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A7217862C9002C443D /* ChildViewController1.swift */; };
 		315198AA217862D7002C443D /* ChildViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A9217862D6002C443D /* ChildViewController2.swift */; };
+		31C28CE0218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C28CDF218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		315198A5217862AB002C443D /* ChildViewController2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChildViewController2.storyboard; sourceTree = "<group>"; };
 		315198A7217862C9002C443D /* ChildViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
 		315198A9217862D6002C443D /* ChildViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController2.swift; sourceTree = "<group>"; };
+		31C28CDF218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FixedNumberPagingViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		31C28CDD218AD74500E86A00 /* FixedNumberPagingViews */ = {
 			isa = PBXGroup;
 			children = (
+				31C28CDF218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard */,
 				3151989F21785F0C002C443D /* PagingBodyView.storyboard */,
 			);
 			path = FixedNumberPagingViews;
@@ -227,6 +230,7 @@
 				315198A021785F0C002C443D /* PagingBodyView.storyboard in Resources */,
 				3144CE8F2178169200F6F6A8 /* Assets.xcassets in Resources */,
 				3144CE8D2178169100F6F6A8 /* Main.storyboard in Resources */,
+				31C28CE0218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

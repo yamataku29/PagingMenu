@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2zO-d4-9Jd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Dyi-RD-rwP">
+            <objects>
+                <viewController id="2zO-d4-9Jd" customClass="ViewController" customModule="PagingMenu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hNB-UH-yxJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ece-MY-O2w" customClass="PagingMenuHeaderView" customModule="PagingMenu" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="EpN-5u-7zr"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubA-U7-Kr8">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <connections>
+                                    <segue destination="xD5-ee-8cF" kind="embed" id="ZhH-ca-sKr"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ece-MY-O2w" firstAttribute="trailing" secondItem="4ko-tg-RDo" secondAttribute="trailing" id="8Hg-9a-ejU"/>
+                            <constraint firstItem="ubA-U7-Kr8" firstAttribute="leading" secondItem="4ko-tg-RDo" secondAttribute="leading" id="JmD-Oo-gB6"/>
+                            <constraint firstItem="Ece-MY-O2w" firstAttribute="top" secondItem="4ko-tg-RDo" secondAttribute="top" id="Vsf-SO-Dnh"/>
+                            <constraint firstItem="ubA-U7-Kr8" firstAttribute="top" secondItem="Ece-MY-O2w" secondAttribute="bottom" id="X3K-IW-zT3"/>
+                            <constraint firstItem="ubA-U7-Kr8" firstAttribute="trailing" secondItem="4ko-tg-RDo" secondAttribute="trailing" id="fOR-3j-2Z3"/>
+                            <constraint firstItem="ubA-U7-Kr8" firstAttribute="bottom" secondItem="hNB-UH-yxJ" secondAttribute="bottom" id="kDT-fw-iok"/>
+                            <constraint firstItem="Ece-MY-O2w" firstAttribute="leading" secondItem="4ko-tg-RDo" secondAttribute="leading" id="rKH-AX-Cnh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4ko-tg-RDo"/>
+                    </view>
+                    <connections>
+                        <outlet property="pagingMenuHeaderView" destination="Ece-MY-O2w" id="a1i-tj-mkk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fv5-4K-zzf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="92.203898050974516"/>
+        </scene>
+        <!--PagingBodyView-->
+        <scene sceneID="e70-CW-wHk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PagingBodyView" id="xD5-ee-8cF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vcp-7r-xaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="506"/>
+        </scene>
+    </scenes>
+</document>
