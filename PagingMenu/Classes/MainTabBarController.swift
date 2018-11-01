@@ -13,14 +13,20 @@ class MainTabBarController: UITabBarController {
     private var fixedNumberPagingViewController: UIViewController {
         let storyboard = UIStoryboard(name: FixedNumberPagingViewController.identifier, bundle: nil)
         let viewController = storyboard.instantiateInitialViewController()!
-        viewController.tabBarItem = UITabBarItem(title: "Fixed", image: UIImage(named: "fixed_icon"), tag: 0)
+        viewController.tabBarItem = UITabBarItem(title: "Fixed", image: UIImage(named: "u_turn_icon"), tag: 0)
+        return viewController
+    }
+    
+    private var infinitePagingViewController: UIViewController {
+        let viewController = InfinitePagingViewController()
+        viewController.tabBarItem = UITabBarItem(title: "Infinite", image: UIImage(named: "infinit_icon"), tag: 0)
         return viewController
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setViewControllers([fixedNumberPagingViewController], animated: false)
+        setViewControllers([fixedNumberPagingViewController, infinitePagingViewController], animated: false)
         selectedIndex = 0
     }
 }
