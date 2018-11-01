@@ -17,11 +17,23 @@ class InfinitePagingViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ChildViewController2", bundle: Bundle(for: ChildViewController1.self))
         return storyboard.instantiateInitialViewController()!
     }
+    private var viewController3: UIViewController {
+        let storyboard = UIStoryboard(name: "ChildViewController1", bundle: Bundle(for: ChildViewController1.self))
+        let viewController = storyboard.instantiateInitialViewController()!
+        viewController.view.backgroundColor = UIColor.red
+        return viewController
+    }
+    private var viewController4: UIViewController {
+        let storyboard = UIStoryboard(name: "ChildViewController2", bundle: Bundle(for: ChildViewController1.self))
+        let viewController = storyboard.instantiateInitialViewController()!
+        viewController.view.backgroundColor = UIColor.blue
+        return viewController
+    }
     private var subviewControllers: [UIViewController] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subviewControllers = [viewController1, viewController2, viewController1, viewController2]
+        subviewControllers = [viewController1, viewController2, viewController3, viewController4]
         setSubViews()
     }
 }

@@ -33,6 +33,7 @@ class InfinitePagingCollectionView: UICollectionView {
     func configure(with subviews: [UIView]) {
         let layout = UICollectionViewFlowLayout()
         guard let subview = subviews.first else { return }
+        layout.minimumLineSpacing = 0
         layout.itemSize = subview.frame.size
         layout.scrollDirection = .horizontal
         collectionViewLayout = layout
@@ -55,7 +56,6 @@ private extension InfinitePagingCollectionView {
 }
 
 extension InfinitePagingCollectionView: UICollectionViewDelegate {
-    // 不要な場合は削除する
 }
 
 extension InfinitePagingCollectionView: UICollectionViewDataSource {
