@@ -10,74 +10,92 @@ import UIKit
 
 class InfinitePagingCollectionView: UICollectionView {
     
-    let colors: [UIColor] = [.blue, .yellow, .red, .green, .gray]
-    let isInfinity = true
-    var cellItemsWidth: CGFloat = 0.0
+    private let colors: [UIColor] = [.blue, .yellow, .red, .green, .gray]
+    private var cellItemsWidth: CGFloat = 0
+    
+    var isScrollInfinity = true
+    private var pagingSubviews: [UIView] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        delegate = self
-        dataSource = self
-        register(InfinitePagingViewCell.self, forCellWithReuseIdentifier: InfinitePagingViewCell.identifier)
     }
     
     convenience init(frame: CGRect) {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 200, height: frame.height / 2)
-        layout.scrollDirection = .horizontal
-        
-        self.init(frame: frame, collectionViewLayout: layout)
-        
-        isPagingEnabled = true
-        showsHorizontalScrollIndicator = false
-        backgroundColor = UIColor.white
+        self.init(frame: frame, collectionViewLayout: UICollectionViewFlowLayout())
+        setup()
     }
     
+    func configure(with subviews: [UIView]) {
+        let layout = UICollectionViewFlowLayout()
+        guard let subview = subviews.first else { return }
+        layout.itemSize = subview.frame.size
+        layout.scrollDirection = .horizontal
+        collectionViewLayout = layout
+        pagingSubviews = subviews
+    }
 }
 
-private extension InfinitePagingCollectionView {}
-
-extension InfinitePagingCollectionView: UICollectionViewDelegate {
+private extension InfinitePagingCollectionView {
+    func setup() {
+        delegate = self
+        dataSource = self
+        isPagingEnabled = true
+        showsHorizontalScrollIndicator = false
+        register(InfinitePagingViewCell.self, forCellWithReuseIdentifier: InfinitePagingViewCell.identifier)
+    }
     func configure(cell: InfinitePagingViewCell, indexPath: IndexPath) {
-        // indexを修正する
-        let fixedIndex = isInfinity ? indexPath.row % colors.count : indexPath.row
+        let fixedIndex = isScrollInfinity ? indexPath.row % colors.count : indexPath.row
         cell.contentView.backgroundColor = colors[fixedIndex]
     }
 }
 
+extension InfinitePagingCollectionView: UICollectionViewDelegate {
+    // 不要な場合は削除する
+}
+
 extension InfinitePagingCollectionView: UICollectionViewDataSource {
-    // セクションごとのセル数
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isInfinity ? colors.count * 3 : colors.count
+    var expansionFactor: Int {
+        return 3
     }
     
-    // セルの設定
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return isScrollInfinity ? pagingSubviews.count * expansionFactor : pagingSubviews.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: InfinitePagingViewCell.identifier, for: indexPath) as! InfinitePagingViewCell
-        
-        configure(cell: cell, indexPath: indexPath)
-        
+        let index = isScrollInfinity ? indexPath.row % pagingSubviews.count : indexPath.row
+        let cell = dequeueReusableCell(withReuseIdentifier: InfinitePagingViewCell.identifier,
+                                       for: indexPath) as! InfinitePagingViewCell
+        cell.configure(with: pagingSubviews[index])
         return cell
     }
 }
 
 extension InfinitePagingCollectionView: UIScrollViewDelegate {
+    var scrollableRange: CGFloat {
+        return cellItemsWidth * 2.0
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if isInfinity {
-            if cellItemsWidth == 0.0 {
-                cellItemsWidth = floor(scrollView.contentSize.width / 3.0) // 表示したい要素群のwidthを計算
-            }
-            if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > cellItemsWidth * 2.0) { // スクロールした位置がしきい値を超えたら中央に戻す
-                scrollView.contentOffset.x = cellItemsWidth
-            }
+        guard isScrollInfinity else { return }
+        if cellItemsWidth == 0 {
+            cellItemsWidth = floor(scrollView.contentSize.width / expansionFactor.toCGFloat)
+        }
+        if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > scrollableRange) {
+            scrollView.contentOffset.x = cellItemsWidth
         }
     }
 }
 
 class InfinitePagingViewCell: UICollectionViewCell {
     static let identifier = "InfinitePagingViewCell"
+    
+    func configure(with childView: UIView) {
+        addSubview(childView)
+    }
 }
