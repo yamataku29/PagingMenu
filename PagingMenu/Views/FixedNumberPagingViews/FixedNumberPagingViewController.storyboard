@@ -25,7 +25,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubA-U7-Kr8">
-                                <rect key="frame" x="0.0" y="70" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <connections>
                                     <segue destination="xD5-ee-8cF" kind="embed" id="ZhH-ca-sKr"/>
                                 </connections>
@@ -34,11 +34,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ece-MY-O2w" firstAttribute="trailing" secondItem="4ko-tg-RDo" secondAttribute="trailing" id="8Hg-9a-ejU"/>
+                            <constraint firstItem="4ko-tg-RDo" firstAttribute="bottom" secondItem="ubA-U7-Kr8" secondAttribute="bottom" id="Clj-ke-NEq"/>
                             <constraint firstItem="ubA-U7-Kr8" firstAttribute="leading" secondItem="4ko-tg-RDo" secondAttribute="leading" id="JmD-Oo-gB6"/>
                             <constraint firstItem="Ece-MY-O2w" firstAttribute="top" secondItem="4ko-tg-RDo" secondAttribute="top" id="Vsf-SO-Dnh"/>
                             <constraint firstItem="ubA-U7-Kr8" firstAttribute="top" secondItem="Ece-MY-O2w" secondAttribute="bottom" id="X3K-IW-zT3"/>
                             <constraint firstItem="ubA-U7-Kr8" firstAttribute="trailing" secondItem="4ko-tg-RDo" secondAttribute="trailing" id="fOR-3j-2Z3"/>
-                            <constraint firstItem="ubA-U7-Kr8" firstAttribute="bottom" secondItem="hNB-UH-yxJ" secondAttribute="bottom" constant="-50" id="kDT-fw-iok"/>
                             <constraint firstItem="Ece-MY-O2w" firstAttribute="leading" secondItem="4ko-tg-RDo" secondAttribute="leading" id="rKH-AX-Cnh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4ko-tg-RDo"/>
