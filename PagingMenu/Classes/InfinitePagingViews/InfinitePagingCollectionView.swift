@@ -64,6 +64,7 @@ extension InfinitePagingCollectionView: UICollectionViewDelegate {
 
 extension InfinitePagingCollectionView: UICollectionViewDataSource {
     private var expansionFactor: Int {
+        // 左右にスクロールされる可能性があるので実際に表示するView配列の要素を3倍にしている
         return 3
     }
     
@@ -83,6 +84,7 @@ extension InfinitePagingCollectionView: UICollectionViewDataSource {
 
 extension InfinitePagingCollectionView: UIScrollViewDelegate {
     var scrollableRange: CGFloat {
+        // UIScrollView.contentSize.widthをリセットする閾値を実際の幅の2倍にしている
         return cellItemsWidth * 2.0
     }
     
