@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol InfinitePagingCollectionViewDelegate: class {
+    func didEndScrolling(index: Int)
+}
+
 class InfinitePagingCollectionView: UICollectionView {
     
     private let colors: [UIColor] = [.blue, .yellow, .red, .green, .gray]
     private var cellItemsWidth: CGFloat = 0
     
     var isScrollInfinity = true
+    private weak var infinitePagingCollectionViewDelegate: InfinitePagingCollectionViewDelegate!
     private var pagingSubviews: [UIView] = []
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,7 +35,7 @@ class InfinitePagingCollectionView: UICollectionView {
         setup()
     }
     
-    func configure(with subviews: [UIView]) {
+    func configure(with subviews: [UIView], delegate: InfinitePagingCollectionViewDelegate) {
         let layout = UICollectionViewFlowLayout()
         guard let subview = subviews.first else { return }
         layout.minimumLineSpacing = 0
@@ -38,6 +43,7 @@ class InfinitePagingCollectionView: UICollectionView {
         layout.scrollDirection = .horizontal
         collectionViewLayout = layout
         pagingSubviews = subviews
+        infinitePagingCollectionViewDelegate = delegate
     }
 }
 
@@ -49,6 +55,7 @@ private extension InfinitePagingCollectionView {
         showsHorizontalScrollIndicator = false
         register(InfinitePagingViewCell.self, forCellWithReuseIdentifier: InfinitePagingViewCell.identifier)
     }
+    
     func configure(cell: InfinitePagingViewCell, indexPath: IndexPath) {
         let fixedIndex = isScrollInfinity ? indexPath.row % colors.count : indexPath.row
         cell.contentView.backgroundColor = colors[fixedIndex]
@@ -56,10 +63,14 @@ private extension InfinitePagingCollectionView {
 }
 
 extension InfinitePagingCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        infinitePagingCollectionViewDelegate?.didEndScrolling(index: cell.tag)
+    }
 }
 
 extension InfinitePagingCollectionView: UICollectionViewDataSource {
-    var expansionFactor: Int {
+    private var expansionFactor: Int {
         return 3
     }
     
@@ -71,6 +82,7 @@ extension InfinitePagingCollectionView: UICollectionViewDataSource {
         let index = isScrollInfinity ? indexPath.row % pagingSubviews.count : indexPath.row
         let cell = dequeueReusableCell(withReuseIdentifier: InfinitePagingViewCell.identifier,
                                        for: indexPath) as! InfinitePagingViewCell
+        cell.tag = index
         cell.configure(with: pagingSubviews[index])
         return cell
     }

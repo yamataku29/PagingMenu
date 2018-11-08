@@ -9,6 +9,10 @@
 import UIKit
 
 class InfinitePagingViewController: UIViewController {
+    
+    @IBOutlet private weak var headerView: UIView!
+    @IBOutlet private weak var bodyView: InfinitePagingCollectionView!
+    
     private var viewController1: UIViewController {
         let storyboard = UIStoryboard(name: "ChildViewController1", bundle: Bundle(for: ChildViewController1.self))
         return storyboard.instantiateInitialViewController()!
@@ -40,14 +44,25 @@ class InfinitePagingViewController: UIViewController {
 
 private extension InfinitePagingViewController {
     func setSubViews() {
+        setBodyViews()
+    }
+    
+    func setHeaderView() {
+        
+    }
+    
+    func setBodyViews() {
         let subviews: [UIView] = subviewControllers.map { viewController in
             addChild(viewController)
             viewController.didMove(toParent: self)
             return viewController.view
         }
-        let infinitePagingCollectionView = InfinitePagingCollectionView(frame: view.frame)
-        infinitePagingCollectionView.center = view.center
-        infinitePagingCollectionView.configure(with: subviews)
-        view.addSubview(infinitePagingCollectionView)
+        bodyView.configure(with: subviews, delegate: self)
+    }
+}
+
+extension InfinitePagingViewController: InfinitePagingCollectionViewDelegate {
+    func didEndScrolling(index: Int) {
+        print("👌Current page: \(index)")
     }
 }
