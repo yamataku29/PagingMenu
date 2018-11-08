@@ -23,6 +23,7 @@
 		315198A6217862AB002C443D /* ChildViewController2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 315198A5217862AB002C443D /* ChildViewController2.storyboard */; };
 		315198A8217862C9002C443D /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A7217862C9002C443D /* ChildViewController1.swift */; };
 		315198AA217862D7002C443D /* ChildViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315198A9217862D6002C443D /* ChildViewController2.swift */; };
+		31B235FF219424030070A671 /* CarouselDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B235FE219424030070A671 /* CarouselDisplayable.swift */; };
 		31C28CE0218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C28CDF218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard */; };
 		31C28CE2218AD9AF00E86A00 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C28CE1218AD9AF00E86A00 /* MainTabBarController.swift */; };
 		31C28CEA218AE21A00E86A00 /* InfinitePagingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C28CE9218AE21A00E86A00 /* InfinitePagingViewController.xib */; };
@@ -49,6 +50,7 @@
 		315198A5217862AB002C443D /* ChildViewController2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChildViewController2.storyboard; sourceTree = "<group>"; };
 		315198A7217862C9002C443D /* ChildViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
 		315198A9217862D6002C443D /* ChildViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController2.swift; sourceTree = "<group>"; };
+		31B235FE219424030070A671 /* CarouselDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselDisplayable.swift; sourceTree = "<group>"; };
 		31C28CDF218AD7F900E86A00 /* FixedNumberPagingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FixedNumberPagingViewController.storyboard; sourceTree = "<group>"; };
 		31C28CE1218AD9AF00E86A00 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		31C28CE9218AE21A00E86A00 /* InfinitePagingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfinitePagingViewController.xib; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				31C28CEB218AEFBB00E86A00 /* InfinitePagingViewController.swift */,
 				31C28CED218AF34800E86A00 /* InfinitePagingCollectionView.swift */,
+				31B235FE219424030070A671 /* CarouselDisplayable.swift */,
 			);
 			path = InfinitePagingViews;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				315198A221785F26002C443D /* PagingBodyViewController.swift in Sources */,
 				3144CE882178169100F6F6A8 /* AppDelegate.swift in Sources */,
 				3150CFE5217F563F00027803 /* PagingenabledScrollview.swift in Sources */,
+				31B235FF219424030070A671 /* CarouselDisplayable.swift in Sources */,
 				31C28CEC218AEFBB00E86A00 /* InfinitePagingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
