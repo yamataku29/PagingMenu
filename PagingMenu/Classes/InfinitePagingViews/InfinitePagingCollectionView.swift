@@ -14,12 +14,10 @@ protocol InfinitePagingCollectionViewDelegate: class {
 
 class InfinitePagingCollectionView: UICollectionView {
     
-    private let colors: [UIColor] = [.blue, .yellow, .red, .green, .gray]
-    private var cellItemsWidth: CGFloat = 0
-    
     var isScrollInfinity = true
     private weak var infinitePagingCollectionViewDelegate: InfinitePagingCollectionViewDelegate!
     private var pagingSubviews: [UIView] = []
+    private var cellItemsWidth: CGFloat = 0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,11 +52,6 @@ private extension InfinitePagingCollectionView {
         isPagingEnabled = true
         showsHorizontalScrollIndicator = false
         register(InfinitePagingViewCell.self, forCellWithReuseIdentifier: InfinitePagingViewCell.identifier)
-    }
-    
-    func configure(cell: InfinitePagingViewCell, indexPath: IndexPath) {
-        let fixedIndex = isScrollInfinity ? indexPath.row % colors.count : indexPath.row
-        cell.contentView.backgroundColor = colors[fixedIndex]
     }
 }
 
