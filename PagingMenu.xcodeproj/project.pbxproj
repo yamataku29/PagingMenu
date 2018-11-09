@@ -28,7 +28,6 @@
 		31C28CEA218AE21A00E86A00 /* InfinitePagingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C28CE9218AE21A00E86A00 /* InfinitePagingViewController.xib */; };
 		31C28CEC218AEFBB00E86A00 /* InfinitePagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C28CEB218AEFBB00E86A00 /* InfinitePagingViewController.swift */; };
 		31C28CEE218AF34800E86A00 /* InfinitePagingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C28CED218AF34800E86A00 /* InfinitePagingCollectionView.swift */; };
-		31ED76812195275300538A60 /* InfinitePagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED76802195275300538A60 /* InfinitePagingScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +54,6 @@
 		31C28CE9218AE21A00E86A00 /* InfinitePagingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfinitePagingViewController.xib; sourceTree = "<group>"; };
 		31C28CEB218AEFBB00E86A00 /* InfinitePagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePagingViewController.swift; sourceTree = "<group>"; };
 		31C28CED218AF34800E86A00 /* InfinitePagingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePagingCollectionView.swift; sourceTree = "<group>"; };
-		31ED76802195275300538A60 /* InfinitePagingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePagingScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +187,6 @@
 			children = (
 				31C28CEB218AEFBB00E86A00 /* InfinitePagingViewController.swift */,
 				31C28CED218AF34800E86A00 /* InfinitePagingCollectionView.swift */,
-				31ED76802195275300538A60 /* InfinitePagingScrollView.swift */,
 			);
 			path = InfinitePagingViews;
 			sourceTree = "<group>";
@@ -292,7 +289,6 @@
 				31C28CEE218AF34800E86A00 /* InfinitePagingCollectionView.swift in Sources */,
 				3151989E217850FC002C443D /* Extensions.swift in Sources */,
 				315198A8217862C9002C443D /* ChildViewController1.swift in Sources */,
-				31ED76812195275300538A60 /* InfinitePagingScrollView.swift in Sources */,
 				315198AA217862D7002C443D /* ChildViewController2.swift in Sources */,
 				3144CE8A2178169100F6F6A8 /* FixedNumberPagingViewController.swift in Sources */,
 				3144CE9F21781B5000F6F6A8 /* PagingMenuHeaderView.swift in Sources */,
