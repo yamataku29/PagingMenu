@@ -64,8 +64,8 @@ extension InfinitePagingCollectionView: UICollectionViewDelegate {
 
 extension InfinitePagingCollectionView: UICollectionViewDataSource {
     private var expansionFactor: Int {
-        // 左右にスクロールされる可能性があるので実際に表示するView配列の要素を3倍にしている
-        return 3
+        // 表示するビュー数の倍率
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,8 +84,8 @@ extension InfinitePagingCollectionView: UICollectionViewDataSource {
 
 extension InfinitePagingCollectionView: UIScrollViewDelegate {
     var scrollableRange: CGFloat {
-        // UIScrollView.contentSize.widthをリセットする閾値を実際の幅の2倍にしている
-        return cellItemsWidth * 2.0
+        // スクロール可能範囲は表示しているビュー数よりも小さくする必要があるので減算している
+        return cellItemsWidth * (expansionFactor - 1).toCGFloat
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -104,5 +104,11 @@ class InfinitePagingViewCell: UICollectionViewCell {
     
     func configure(with childView: UIView) {
         addSubview(childView)
+    }
+    
+    override func prepareForReuse() {
+        subviews.forEach { subview in
+            subview.removeFromSuperview()
+        }
     }
 }

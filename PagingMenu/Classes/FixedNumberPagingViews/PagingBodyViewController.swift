@@ -56,8 +56,6 @@ extension PagingBodyViewController: UIScrollViewDelegate {
         delegate?.didEndScrolling(index: pagingenabledScrollview.currentPageIndex)
     }
     
-    
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let pagingenabledScrollview = scrollView as? PagingenabledScrollview else { return }
         delegate?.didEndScrolling(index: pagingenabledScrollview.currentPageIndex)
