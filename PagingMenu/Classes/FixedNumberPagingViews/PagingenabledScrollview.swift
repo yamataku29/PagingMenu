@@ -21,9 +21,14 @@ class PagingenabledScrollview: UIScrollView {
         let offsetX = index.toCGFloat * frame.width
         return CGPoint(x: offsetX, y: 0)
     }
+    
+    func scrollTo(_ index: Int, animated: Bool = true) {
+        let offset = getPagePosition(from: index)
+        setContentOffset(offset, animated: animated)
+    }
 }
 
-extension PagingenabledScrollview {
+private extension PagingenabledScrollview {
     var screenCenterX: CGFloat {
         return bounds.width / 2
     }

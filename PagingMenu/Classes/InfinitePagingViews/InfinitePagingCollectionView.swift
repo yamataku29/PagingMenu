@@ -64,7 +64,7 @@ extension InfinitePagingCollectionView: UICollectionViewDelegate {
 
 extension InfinitePagingCollectionView: UICollectionViewDataSource {
     private var expansionFactor: Int {
-        // 表示するビュー数の倍率
+        // 拡張表示するビュー数の倍率
         return 10
     }
     
