@@ -41,7 +41,6 @@ private extension InfinitePagingViewController {
             titleLabel.font = font
             titleLabel.textAlignment = .center
             titleLabel.center = titleView.center
-            titleView.backgroundColor = .yellow
             titleView.addSubview(titleLabel)
             return titleView
         }
