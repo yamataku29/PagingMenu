@@ -37,11 +37,11 @@ class InfinitePagingScrollView: PagingenabledScrollview {
         contentSize = CGSize(width: contentWidth, height: frame.height)
     }
     
-    func getCenterOffset(from offset: CGFloat) -> CGFloat {
-        let pagingSubviewFrame = pagingSubviews.first!.frame
-        let index = round(offset / pagingSubviewFrame.width)
-        return index * pagingSubviewFrame.width
-    }
+//    func getCenterOffset(from offset: CGFloat) -> CGFloat {
+//        let pagingSubviewFrame = pagingSubviews.first!.frame
+//        let index = round(offset / pagingSubviewFrame.width)
+//        return index * pagingSubviewFrame.width
+//    }
 }
 
 private extension InfinitePagingScrollView {
@@ -57,9 +57,9 @@ private extension InfinitePagingScrollView {
 }
 
 extension InfinitePagingScrollView: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
-        let point = CGPoint(x: adjustedOffset, y: 0)
-        scrollView.setContentOffset(point, animated: true)
-    }
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
+//        let point = CGPoint(x: adjustedOffset, y: 0)
+//        scrollView.setContentOffset(point, animated: true)
+//    }
 }

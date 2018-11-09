@@ -10,7 +10,7 @@ import UIKit
 
 class InfinitePagingViewController: UIViewController {
     
-    @IBOutlet private weak var headerView: InfinitePagingScrollView!
+    @IBOutlet private weak var headerView: InfinitePagingCollectionView!
     @IBOutlet private weak var bodyView: InfinitePagingCollectionView!
     
     private var subviewControllers: [UIViewController] = []
@@ -18,7 +18,7 @@ class InfinitePagingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         for i in 0...30 {
-            let vc = getDummyView(title: "title\(i)")
+            let vc = getDummyView(title: "ライフスタイル\(i)")
             subviewControllers.append(vc)
         }
         setHeaderView()
@@ -29,7 +29,7 @@ class InfinitePagingViewController: UIViewController {
 private extension InfinitePagingViewController {
     func setHeaderView() {
         let texts = subviewControllers.map { $0.title! }
-        let font = UIFont(name: "Hiragino Kaku Gothic ProN", size: 8)!
+        let font = UIFont(name: "Hiragino Kaku Gothic ProN", size: 10)!
         let titleViewMergin: CGFloat = 30
         let titleViewWidth = getBiggestTextWidth(from: texts, font) + titleViewMergin
         let subviews: [UIView] = subviewControllers.map { viewController in
@@ -44,7 +44,7 @@ private extension InfinitePagingViewController {
             titleView.addSubview(titleLabel)
             return titleView
         }
-        headerView.configure(with: subviews)
+        headerView.configure(with: subviews, paging: .adjustable, delegate: self)
     }
     
     func setBodyView() {

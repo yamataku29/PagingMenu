@@ -14,14 +14,18 @@ protocol InfinitePagingCollectionViewDelegate: class {
 
 class InfinitePagingCollectionView: UICollectionView {
     
-    var isScrollInfinity = true
+    enum PagingType {
+        case normal
+        case adjustable
+    }
+    
     private weak var infinitePagingCollectionViewDelegate: InfinitePagingCollectionViewDelegate!
+    private var pagingType = PagingType.normal
     private var pagingSubviews: [UIView] = []
     private var cellItemsWidth: CGFloat = 0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -30,18 +34,16 @@ class InfinitePagingCollectionView: UICollectionView {
     
     convenience init(frame: CGRect) {
         self.init(frame: frame, collectionViewLayout: UICollectionViewFlowLayout())
-        setup()
     }
     
-    func configure(with subviews: [UIView], delegate: InfinitePagingCollectionViewDelegate) {
-        let layout = UICollectionViewFlowLayout()
+    func configure(with subviews: [UIView], paging type: PagingType = .normal,
+                   delegate: InfinitePagingCollectionViewDelegate) {
         guard let subview = subviews.first else { return }
-        layout.minimumLineSpacing = 0
-        layout.itemSize = subview.frame.size
-        layout.scrollDirection = .horizontal
-        collectionViewLayout = layout
+        setLayout(itemSize: subview.frame.size)
+        pagingType = type
         pagingSubviews = subviews
         infinitePagingCollectionViewDelegate = delegate
+        setup()
     }
 }
 
@@ -49,9 +51,17 @@ private extension InfinitePagingCollectionView {
     func setup() {
         delegate = self
         dataSource = self
-        isPagingEnabled = true
-        showsHorizontalScrollIndicator = false
+        isPagingEnabled = pagingType == .normal
+        decelerationRate = .fast
         register(InfinitePagingViewCell.self, forCellWithReuseIdentifier: InfinitePagingViewCell.identifier)
+    }
+    
+    func setLayout(itemSize: CGSize) {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.itemSize = itemSize
+        layout.scrollDirection = .horizontal
+        collectionViewLayout = layout
     }
 }
 
@@ -69,11 +79,11 @@ extension InfinitePagingCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isScrollInfinity ? pagingSubviews.count * expansionFactor : pagingSubviews.count
+        return pagingSubviews.count * expansionFactor
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let index = isScrollInfinity ? indexPath.row % pagingSubviews.count : indexPath.row
+        let index = indexPath.row % pagingSubviews.count
         let cell = dequeueReusableCell(withReuseIdentifier: InfinitePagingViewCell.identifier,
                                        for: indexPath) as! InfinitePagingViewCell
         cell.tag = index
@@ -88,14 +98,35 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
         return cellItemsWidth * (expansionFactor - 1).toCGFloat
     }
     
+    func getCenterOffset(from offset: CGFloat) -> CGFloat {
+        let pagingSubviewFrame = pagingSubviews.first!.frame
+        let centerOffset = (frame.size.width - pagingSubviewFrame.width) / 2
+        let totalOffset = offset + centerOffset
+        let index = round(totalOffset / pagingSubviewFrame.width)
+        return (index * pagingSubviewFrame.width) - centerOffset
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard isScrollInfinity else { return }
         if cellItemsWidth == 0 {
             cellItemsWidth = floor(scrollView.contentSize.width / expansionFactor.toCGFloat)
         }
         if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > scrollableRange) {
             scrollView.contentOffset.x = cellItemsWidth
         }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard pagingType == .adjustable else { return }
+        let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
+        let point = CGPoint(x: adjustedOffset, y: 0)
+        scrollView.setContentOffset(point, animated: true)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard pagingType == .adjustable else { return }
+        let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
+        let point = CGPoint(x: adjustedOffset, y: 0)
+        scrollView.setContentOffset(point, animated: true)
     }
 }
 
