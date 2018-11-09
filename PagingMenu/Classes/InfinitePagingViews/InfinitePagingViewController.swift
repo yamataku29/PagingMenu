@@ -64,7 +64,7 @@ private extension InfinitePagingViewController {
 
 extension InfinitePagingViewController: InfinitePagingCollectionViewDelegate {
     func didEndScrolling(index: Int) {
-//        print("👌Current page: \(index)")
+        print("👌Current page: \(index)")
     }
 }
 

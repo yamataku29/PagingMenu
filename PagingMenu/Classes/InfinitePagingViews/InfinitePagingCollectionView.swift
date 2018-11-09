@@ -65,12 +65,7 @@ private extension InfinitePagingCollectionView {
     }
 }
 
-extension InfinitePagingCollectionView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
-        infinitePagingCollectionViewDelegate?.didEndScrolling(index: cell.tag)
-    }
-}
+extension InfinitePagingCollectionView: UICollectionViewDelegate {}
 
 extension InfinitePagingCollectionView: UICollectionViewDataSource {
     private var expansionFactor: Int {
@@ -86,7 +81,6 @@ extension InfinitePagingCollectionView: UICollectionViewDataSource {
         let index = indexPath.row % pagingSubviews.count
         let cell = dequeueReusableCell(withReuseIdentifier: InfinitePagingViewCell.identifier,
                                        for: indexPath) as! InfinitePagingViewCell
-        cell.tag = index
         cell.configure(with: pagingSubviews[index])
         return cell
     }
@@ -106,6 +100,14 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
         return (index * pagingSubviewFrame.width) - centerOffset
     }
     
+    func getCurrentPageIndex(from offset: CGFloat) -> Int {
+        let pagingSubviewFrame = pagingSubviews.first!.frame
+        let centerOffset = (frame.size.width - pagingSubviewFrame.width) / 2
+        let totalOffset = offset + centerOffset
+        let index = Int(round(totalOffset / pagingSubviewFrame.width)) % pagingSubviews.count
+        return index
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if cellItemsWidth == 0 {
             cellItemsWidth = floor(scrollView.contentSize.width / expansionFactor.toCGFloat)
@@ -116,6 +118,9 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentPageIndex = getCurrentPageIndex(from: scrollView.contentOffset.x)
+        infinitePagingCollectionViewDelegate?.didEndScrolling(index: currentPageIndex)
+        
         guard pagingType == .adjustable else { return }
         let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
         let point = CGPoint(x: adjustedOffset, y: 0)
@@ -123,6 +128,11 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            let currentPageIndex = getCurrentPageIndex(from: scrollView.contentOffset.x)
+            infinitePagingCollectionViewDelegate?.didEndScrolling(index: currentPageIndex)
+        }
+        
         guard pagingType == .adjustable else { return }
         let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
         let point = CGPoint(x: adjustedOffset, y: 0)
