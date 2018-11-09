@@ -19,25 +19,19 @@ class InfinitePagingScrollView: PagingenabledScrollview {
         setup()
     }
     
-    private var pagingSubviews: [UIView] = []
-    
     func configure(with subviews: [UIView]) {
-        for _ in 1...expansionFactor {
-            pagingSubviews += subviews
-        }
-        
         var contentWidth: CGFloat = 0
-        pagingSubviews.forEach { view in
-            contentWidth += view.frame.width
-        }
-        contentSize = CGSize(width: contentWidth, height: frame.height)
         
-        pagingSubviews.enumerated().forEach { (index, view) in
+        subviews.enumerated().forEach { (index, view) in
+            view.frame.origin = CGPoint(x: view.frame.width * index.toCGFloat, y: 0)
             addSubview(view)
         }
         
-        let centerIndex = (pagingSubviews.count/2) - 1
-        scrollTo(centerIndex, animated: false)
+        subviews.forEach { view in
+            contentWidth += view.frame.width
+        }
+        
+        contentSize = CGSize(width: contentWidth, height: frame.height)
     }
 }
 
