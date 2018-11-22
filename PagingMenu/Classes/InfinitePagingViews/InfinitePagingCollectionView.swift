@@ -21,7 +21,7 @@ class InfinitePagingCollectionView: UICollectionView {
     
     private weak var infinitePagingCollectionViewDelegate: InfinitePagingCollectionViewDelegate!
     private var pagingType = PagingType.normal
-    private var pagingSubviews: [UIView] = []
+    private(set) var pagingSubviews: [UIView] = []
     private var cellItemsWidth: CGFloat {
         return floor(contentSize.width / expansionFactor.toCGFloat)
     }

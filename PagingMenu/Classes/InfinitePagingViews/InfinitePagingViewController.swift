@@ -12,6 +12,8 @@ class InfinitePagingViewController: UIViewController {
     
     @IBOutlet private weak var headerView: InfinitePagingCollectionView!
     @IBOutlet private weak var bodyView: InfinitePagingCollectionView!
+    @IBOutlet private weak var moveBarView: UIView!
+    @IBOutlet private weak var moveBarViewWidth: NSLayoutConstraint!
     
     private var subviewControllers: [UIViewController] = []
     
@@ -66,10 +68,16 @@ private extension InfinitePagingViewController {
         let maximumText = texts.max(by: {$1.count > $0.count})!
         return maximumText.size(withAttributes: [NSAttributedString.Key.font : font]).width
     }
+    
+    func resizeMoveBarView(with width: CGFloat) {
+        moveBarViewWidth.constant = width
+    }
 }
 
 extension InfinitePagingViewController: InfinitePagingCollectionViewDelegate {
     func didEndScrolling(index: Int) {
+        let headerViewWidth = headerView.pagingSubviews[index].frame.width
+        resizeMoveBarView(with: headerViewWidth)
         print("👀Current page: \(index)")
     }
 }
