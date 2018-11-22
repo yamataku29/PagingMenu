@@ -24,6 +24,12 @@ class InfinitePagingViewController: UIViewController {
         setHeaderView()
         setBodyView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // ヘッダービューコレクションビューはデフォルトで左寄せのレイアウトになるのでセンターに移動させる
+        headerView.moveToCenter()
+    }
 }
 
 private extension InfinitePagingViewController {
@@ -64,7 +70,7 @@ private extension InfinitePagingViewController {
 
 extension InfinitePagingViewController: InfinitePagingCollectionViewDelegate {
     func didEndScrolling(index: Int) {
-        print("👌Current page: \(index)")
+        print("👀Current page: \(index)")
     }
 }
 

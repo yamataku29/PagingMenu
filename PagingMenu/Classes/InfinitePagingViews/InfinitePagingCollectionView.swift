@@ -22,7 +22,9 @@ class InfinitePagingCollectionView: UICollectionView {
     private weak var infinitePagingCollectionViewDelegate: InfinitePagingCollectionViewDelegate!
     private var pagingType = PagingType.normal
     private var pagingSubviews: [UIView] = []
-    private var cellItemsWidth: CGFloat = 0
+    private var cellItemsWidth: CGFloat {
+        return floor(contentSize.width / expansionFactor.toCGFloat)
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -44,6 +46,16 @@ class InfinitePagingCollectionView: UICollectionView {
         pagingSubviews = subviews
         infinitePagingCollectionViewDelegate = delegate
         setup()
+        // 初期表示時にはスクロール系のDelegateメソッドが発火しないので
+        // ここでindex0のぺセルが表示されていることをdelegateに伝える
+        infinitePagingCollectionViewDelegate?.didEndScrolling(index: 0)
+    }
+    
+    func moveToCenter() {
+        guard let firstSubview = pagingSubviews.first else { return }
+        let inScreenOffsetX = (frame.width - firstSubview.frame.width) / 2
+        let totalOffsetX = firstSubview.frame.width * (pagingSubviews.count).toCGFloat - inScreenOffsetX
+        contentOffset.x = totalOffsetX
     }
 }
 
@@ -54,6 +66,9 @@ private extension InfinitePagingCollectionView {
         isPagingEnabled = pagingType == .normal
         decelerationRate = .fast
         register(InfinitePagingViewCell.self, forCellWithReuseIdentifier: InfinitePagingViewCell.identifier)
+        guard let firstSubview = pagingSubviews.first else { return }
+        let size = CGSize(width: firstSubview.frame.width * pagingSubviews.count.toCGFloat, height: firstSubview.frame.height)
+        contentSize = size
     }
     
     func setLayout(itemSize: CGSize) {
@@ -109,9 +124,6 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if cellItemsWidth == 0 {
-            cellItemsWidth = floor(scrollView.contentSize.width / expansionFactor.toCGFloat)
-        }
         if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > scrollableRange) {
             scrollView.contentOffset.x = cellItemsWidth
         }
