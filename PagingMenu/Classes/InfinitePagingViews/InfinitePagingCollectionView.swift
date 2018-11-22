@@ -58,6 +58,12 @@ class InfinitePagingCollectionView: UICollectionView {
     }
     
     func moveTo(_ index: Int) {
+        // TODO: スクロールの挙動が思わしくないので修正する
+        // 1. delegateにスクロール方向を渡す
+        // 2. スクロール方向によって正負のどちらのindexを検出するかを判定
+        // 3. 正負どちらかの方向において最も近い移動先indexのセルを検出
+        // 4. 検出されたセルのOffsetを計算
+        // 5. 計算されたOffsetを setContentOffset() に入力
         guard let firstSubview = pagingSubviews.first else { return }
         let offsetX = firstSubview.frame.width * index.toCGFloat - inScreenOffsetX
         setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
