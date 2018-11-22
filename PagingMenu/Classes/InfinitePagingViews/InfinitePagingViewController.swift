@@ -57,6 +57,11 @@ private extension InfinitePagingViewController {
     
     func setBodyView() {
         let subviews: [UIView] = subviewControllers.map { viewController in
+            let label = UILabel(frame: CGRect(x: viewController.view.center.x-100, y: 350,
+                                              width: 200, height: 50))
+            label.text = viewController.title
+            label.textAlignment = .center
+            viewController.view.addSubview(label)
             addChild(viewController)
             viewController.didMove(toParent: self)
             return viewController.view
@@ -75,10 +80,11 @@ private extension InfinitePagingViewController {
 }
 
 extension InfinitePagingViewController: InfinitePagingCollectionViewDelegate {
-    func didEndScrolling(index: Int) {
+    func didEndScrolling(collectionView: UICollectionView, index: Int) {
         let headerViewWidth = headerView.pagingSubviews[index].frame.width
         resizeMoveBarView(with: headerViewWidth)
-        print("👀Current page: \(index)")
+        if collectionView == headerView { bodyView.moveTo(index) }
+        if collectionView == bodyView { headerView.moveTo(index) }
     }
 }
 

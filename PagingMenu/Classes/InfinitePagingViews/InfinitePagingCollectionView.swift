@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InfinitePagingCollectionViewDelegate: class {
-    func didEndScrolling(index: Int)
+    func didEndScrolling(collectionView: UICollectionView, index: Int)
 }
 
 class InfinitePagingCollectionView: UICollectionView {
@@ -48,18 +48,28 @@ class InfinitePagingCollectionView: UICollectionView {
         setup()
         // 初期表示時にはスクロール系のDelegateメソッドが発火しないので
         // ここでindex0のぺセルが表示されていることをdelegateに伝える
-        infinitePagingCollectionViewDelegate?.didEndScrolling(index: 0)
+        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: 0)
     }
     
     func moveToCenter() {
         guard let firstSubview = pagingSubviews.first else { return }
-        let inScreenOffsetX = (frame.width - firstSubview.frame.width) / 2
         let totalOffsetX = firstSubview.frame.width * (pagingSubviews.count).toCGFloat - inScreenOffsetX
         contentOffset.x = totalOffsetX
+    }
+    
+    func moveTo(_ index: Int) {
+        guard let firstSubview = pagingSubviews.first else { return }
+        let offsetX = firstSubview.frame.width * index.toCGFloat - inScreenOffsetX
+        setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
 }
 
 private extension InfinitePagingCollectionView {
+    var inScreenOffsetX: CGFloat {
+        guard let firstSubview = pagingSubviews.first else { return 0 }
+        return (frame.width - firstSubview.frame.width) / 2
+    }
+    
     func setup() {
         delegate = self
         dataSource = self
@@ -108,18 +118,16 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     }
     
     func getCenterOffset(from offset: CGFloat) -> CGFloat {
-        let pagingSubviewFrame = pagingSubviews.first!.frame
-        let centerOffset = (frame.size.width - pagingSubviewFrame.width) / 2
-        let totalOffset = offset + centerOffset
-        let index = round(totalOffset / pagingSubviewFrame.width)
-        return (index * pagingSubviewFrame.width) - centerOffset
+        guard let firstSubview = pagingSubviews.first else { return 0 }
+        let totalOffset = offset + inScreenOffsetX
+        let index = round(totalOffset / firstSubview.frame.width)
+        return (index * firstSubview.frame.width) - inScreenOffsetX
     }
     
     func getCurrentPageIndex(from offset: CGFloat) -> Int {
-        let pagingSubviewFrame = pagingSubviews.first!.frame
-        let centerOffset = (frame.size.width - pagingSubviewFrame.width) / 2
-        let totalOffset = offset + centerOffset
-        let index = Int(round(totalOffset / pagingSubviewFrame.width)) % pagingSubviews.count
+        guard let firstSubview = pagingSubviews.first else { return 0 }
+        let totalOffset = offset + inScreenOffsetX
+        let index = Int(round(totalOffset / firstSubview.frame.width)) % pagingSubviews.count
         return index
     }
     
@@ -131,7 +139,7 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPageIndex = getCurrentPageIndex(from: scrollView.contentOffset.x)
-        infinitePagingCollectionViewDelegate?.didEndScrolling(index: currentPageIndex)
+        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex)
         
         guard pagingType == .adjustable else { return }
         let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
@@ -142,7 +150,7 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             let currentPageIndex = getCurrentPageIndex(from: scrollView.contentOffset.x)
-            infinitePagingCollectionViewDelegate?.didEndScrolling(index: currentPageIndex)
+            infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex)
         }
         
         guard pagingType == .adjustable else { return }
