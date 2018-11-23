@@ -60,25 +60,11 @@ class InfinitePagingCollectionView: UICollectionView {
     func moveTo(_ index: Int, isSwipeToRight: Bool) {
         guard let firstSubview = pagingSubviews.first else { return }
         let currentIndex = getCurrentPageIndex(from: contentOffset.x)
-        print("🚀currentIndex: \(currentIndex)")
-        print("🚀moveToIndex: \(index)")
-        print("🚀pagingSubviews.count: \(pagingSubviews.count)")
-        print("🚀isSwipeToRight: \(isSwipeToRight)")
-//        let diffIndex = abs(index - currentIndex)
         let diffIndex = isSwipeToRight ? getDecrementIndex(by: index) : getIncrementIndex(by: index)
         let exceedCount = floor(Double(diffIndex / pagingSubviews.count.toIndex))
         let index = (diffIndex%pagingSubviews.count.toIndex) + Int(exceedCount)
         let moveToOffset = firstSubview.frame.width * (isSwipeToRight ? -index : index).toCGFloat
-        let totalOffsetX = moveToOffset + contentOffset.x - inScreenOffsetX
-//        let moveToOffsetX = firstSubview.frame.width * index.toCGFloat - inScreenOffsetX
-        print("🚀(diffIndex%pagingSubviews.count): \((diffIndex%pagingSubviews.count))")
-        print("🚀exceedCount: \(exceedCount)")
-        print("🚀firstSubview.frame.width: \(firstSubview.frame.width)")
-        print("🚀diffIndex: \(diffIndex)")
-        print("🚀index: \(index)")
-        print("🚀contentOffset.x: \(contentOffset.x)")
-        print("🚀moveToOffset: \(moveToOffset)")
-        print("🚀totalOffsetX: \(totalOffsetX)")
+        let totalOffsetX = moveToOffset + contentOffset.x
         setContentOffset(CGPoint(x: totalOffsetX, y: 0), animated: true)
     }
 }
