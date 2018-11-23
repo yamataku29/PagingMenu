@@ -13,8 +13,6 @@
             <connections>
                 <outlet property="bodyView" destination="X7H-H7-2ZJ" id="QTs-pO-bc5"/>
                 <outlet property="headerView" destination="eFh-FI-2Dc" id="QMb-lJ-XbH"/>
-                <outlet property="moveBarView" destination="ksV-Ms-oY3" id="VUp-Pn-cWN"/>
-                <outlet property="moveBarViewWidth" destination="K3U-Bg-sCc" id="CDT-kM-A3i"/>
                 <outlet property="view" destination="iN0-l3-epB" id="p1C-dR-00h"/>
             </connections>
         </placeholder>
@@ -36,14 +34,6 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksV-Ms-oY3">
-                    <rect key="frame" x="112.5" y="68" width="150" height="2"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="K3U-Bg-sCc"/>
-                        <constraint firstAttribute="height" constant="2" id="Tpg-9D-jk4"/>
-                    </constraints>
-                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="X7H-H7-2ZJ" customClass="InfinitePagingCollectionView" customModule="PagingMenu" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,8 +54,6 @@
                 <constraint firstItem="X7H-H7-2ZJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cjn-eW-Wrb"/>
                 <constraint firstItem="eFh-FI-2Dc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fRi-7u-kI3"/>
                 <constraint firstItem="eFh-FI-2Dc" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="hFQ-ev-6wb"/>
-                <constraint firstItem="ksV-Ms-oY3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mtZ-TQ-jsC"/>
-                <constraint firstItem="ksV-Ms-oY3" firstAttribute="bottom" secondItem="eFh-FI-2Dc" secondAttribute="bottom" id="sum-cV-Tyn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="58.399999999999999" y="110.19490254872565"/>

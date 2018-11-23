@@ -12,9 +12,8 @@ class InfinitePagingViewController: UIViewController {
     
     @IBOutlet private weak var headerView: InfinitePagingCollectionView!
     @IBOutlet private weak var bodyView: InfinitePagingCollectionView!
-    @IBOutlet private weak var moveBarView: UIView!
-    @IBOutlet private weak var moveBarViewWidth: NSLayoutConstraint!
     
+    private var moveBarView: UIView!
     private var subviewControllers: [UIViewController] = []
     
     override func viewDidLoad() {
@@ -23,6 +22,7 @@ class InfinitePagingViewController: UIViewController {
             let vc = getDummyView(title: "ライフスタイル\(i)")
             subviewControllers.append(vc)
         }
+        setMoveBarView()
         setHeaderView()
         setBodyView()
     }
@@ -35,6 +35,15 @@ class InfinitePagingViewController: UIViewController {
 }
 
 private extension InfinitePagingViewController {
+    func setMoveBarView() {
+        moveBarView = UIView()
+        moveBarView.frame.size = CGSize(width: 100, height: 2)
+        moveBarView.center = CGPoint(x: headerView.center.x,
+                                     y: headerView.frame.maxY - moveBarView.frame.height/2)
+        moveBarView.backgroundColor = .blue
+        view.addSubview(moveBarView)
+    }
+    
     func setHeaderView() {
         let texts = subviewControllers.map { $0.title! }
         let font = UIFont(name: "Hiragino Kaku Gothic ProN", size: 10)!
@@ -75,14 +84,17 @@ private extension InfinitePagingViewController {
     }
     
     func resizeMoveBarView(with width: CGFloat) {
-        moveBarViewWidth.constant = width
+        UIView.animate(withDuration: 0.3, animations: {
+            self.moveBarView.frame.size = CGSize(width: width, height: self.moveBarView.frame.height)
+            self.moveBarView.center = CGPoint(x: self.view.center.x, y: self.moveBarView.center.y)
+        })
     }
 }
 
 extension InfinitePagingViewController: InfinitePagingCollectionViewDelegate {
     func didEndScrolling(collectionView: UICollectionView, index: Int, isSwipeToRight: Bool) {
-        let headerViewWidth = headerView.pagingSubviews[index].frame.width
-        resizeMoveBarView(with: headerViewWidth)
+        let width = CGFloat.random(in: 20...180)
+        resizeMoveBarView(with: width)
         if collectionView == headerView { bodyView.moveTo(index, isSwipeToRight: isSwipeToRight) }
         if collectionView == bodyView { headerView.moveTo(index, isSwipeToRight: isSwipeToRight) }
     }
