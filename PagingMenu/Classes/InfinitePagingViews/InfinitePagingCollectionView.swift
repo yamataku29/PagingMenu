@@ -59,7 +59,6 @@ class InfinitePagingCollectionView: UICollectionView {
     
     func moveTo(_ index: Int, isSwipeToRight: Bool) {
         guard let firstSubview = pagingSubviews.first else { return }
-        let currentIndex = getCurrentPageIndex(from: contentOffset.x)
         let diffIndex = isSwipeToRight ? getDecrementIndex(by: index) : getIncrementIndex(by: index)
         let exceedCount = floor(Double(diffIndex / pagingSubviews.count.toIndex))
         let index = (diffIndex%pagingSubviews.count.toIndex) + Int(exceedCount)
