@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InfinitePagingCollectionViewDelegate: class {
-    func didEndScrolling(collectionView: UICollectionView, index: Int)
+    func didEndScrolling(collectionView: UICollectionView, index: Int, isSwipeToRight: Bool)
 }
 
 class InfinitePagingCollectionView: UICollectionView {
@@ -48,7 +48,7 @@ class InfinitePagingCollectionView: UICollectionView {
         setup()
         // 初期表示時にはスクロール系のDelegateメソッドが発火しないので
         // ここでindex0のぺセルが表示されていることをdelegateに伝える
-        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: 0)
+        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: 0, isSwipeToRight: false)
     }
     
     func moveToCenter() {
@@ -57,16 +57,29 @@ class InfinitePagingCollectionView: UICollectionView {
         contentOffset.x = totalOffsetX
     }
     
-    func moveTo(_ index: Int) {
-        // TODO: スクロールの挙動が思わしくないので修正する
-        // 1. delegateにスクロール方向を渡す
-        // 2. スクロール方向によって正負のどちらのindexを検出するかを判定
-        // 3. 正負どちらかの方向において最も近い移動先indexのセルを検出
-        // 4. 検出されたセルのOffsetを計算
-        // 5. 計算されたOffsetを setContentOffset() に入力
+    func moveTo(_ index: Int, isSwipeToRight: Bool) {
         guard let firstSubview = pagingSubviews.first else { return }
-        let offsetX = firstSubview.frame.width * index.toCGFloat - inScreenOffsetX
-        setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
+        let currentIndex = getCurrentPageIndex(from: contentOffset.x)
+        print("🚀currentIndex: \(currentIndex)")
+        print("🚀moveToIndex: \(index)")
+        print("🚀pagingSubviews.count: \(pagingSubviews.count)")
+        print("🚀isSwipeToRight: \(isSwipeToRight)")
+//        let diffIndex = abs(index - currentIndex)
+        let diffIndex = isSwipeToRight ? getDecrementIndex(by: index) : getIncrementIndex(by: index)
+        let exceedCount = floor(Double(diffIndex / pagingSubviews.count.toIndex))
+        let index = (diffIndex%pagingSubviews.count.toIndex) + Int(exceedCount)
+        let moveToOffset = firstSubview.frame.width * (isSwipeToRight ? -index : index).toCGFloat
+        let totalOffsetX = moveToOffset + contentOffset.x - inScreenOffsetX
+//        let moveToOffsetX = firstSubview.frame.width * index.toCGFloat - inScreenOffsetX
+        print("🚀(diffIndex%pagingSubviews.count): \((diffIndex%pagingSubviews.count))")
+        print("🚀exceedCount: \(exceedCount)")
+        print("🚀firstSubview.frame.width: \(firstSubview.frame.width)")
+        print("🚀diffIndex: \(diffIndex)")
+        print("🚀index: \(index)")
+        print("🚀contentOffset.x: \(contentOffset.x)")
+        print("🚀moveToOffset: \(moveToOffset)")
+        print("🚀totalOffsetX: \(totalOffsetX)")
+        setContentOffset(CGPoint(x: totalOffsetX, y: 0), animated: true)
     }
 }
 
@@ -93,6 +106,28 @@ private extension InfinitePagingCollectionView {
         layout.itemSize = itemSize
         layout.scrollDirection = .horizontal
         collectionViewLayout = layout
+    }
+    
+    func getIncrementIndex(by newIndex: Int) -> Int {
+        let currentIndex = getCurrentPageIndex(from: contentOffset.x)
+        // indexが増える前提で呼び出されるメソッドのためnewIndexが
+        // currentIndex以下になった場合は閾値を超えたとみなす
+        if currentIndex > newIndex {
+            return (pagingSubviews.count - currentIndex) + newIndex
+        } else {
+            return newIndex - currentIndex
+        }
+    }
+    
+    func getDecrementIndex(by newIndex: Int) -> Int {
+        let currentIndex = getCurrentPageIndex(from: contentOffset.x)
+        // indexが減る前提で呼び出されるメソッドのためnewIndexが
+        // currentIndex以下になった場合は閾値を超えたとみなす
+        if currentIndex < newIndex {
+            return (pagingSubviews.count - newIndex) + currentIndex
+        } else {
+            return currentIndex - newIndex
+        }
     }
 }
 
@@ -145,7 +180,10 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPageIndex = getCurrentPageIndex(from: scrollView.contentOffset.x)
-        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex)
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        let isScrollToRight = translation.x > 0
+        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex,
+                                                              isSwipeToRight: isScrollToRight)
         
         guard pagingType == .adjustable else { return }
         let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
@@ -156,7 +194,10 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             let currentPageIndex = getCurrentPageIndex(from: scrollView.contentOffset.x)
-            infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex)
+            let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+            let isScrollToRight = translation.x > 0
+            infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex,
+                                                                  isSwipeToRight: isScrollToRight)
         }
         
         guard pagingType == .adjustable else { return }

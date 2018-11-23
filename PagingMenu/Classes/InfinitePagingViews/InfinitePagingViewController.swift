@@ -80,11 +80,11 @@ private extension InfinitePagingViewController {
 }
 
 extension InfinitePagingViewController: InfinitePagingCollectionViewDelegate {
-    func didEndScrolling(collectionView: UICollectionView, index: Int) {
+    func didEndScrolling(collectionView: UICollectionView, index: Int, isSwipeToRight: Bool) {
         let headerViewWidth = headerView.pagingSubviews[index].frame.width
         resizeMoveBarView(with: headerViewWidth)
-        if collectionView == headerView { bodyView.moveTo(index) }
-        if collectionView == bodyView { headerView.moveTo(index) }
+        if collectionView == headerView { bodyView.moveTo(index, isSwipeToRight: isSwipeToRight) }
+        if collectionView == bodyView { headerView.moveTo(index, isSwipeToRight: isSwipeToRight) }
     }
 }
 

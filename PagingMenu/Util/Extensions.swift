@@ -12,4 +12,8 @@ extension Int {
     var toCGFloat: CGFloat {
         return CGFloat(self)
     }
+    
+    var toIndex: Int {
+        return self - 1
+    }
 }
