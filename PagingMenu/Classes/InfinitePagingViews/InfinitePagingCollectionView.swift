@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InfinitePagingCollectionViewDelegate: class {
-    func didEndScrolling(collectionView: UICollectionView, index: Int, isSwipeToRight: Bool)
+    func didEndScrolling(collectionView: UICollectionView, index: Int, isSwipeToRight: Bool, isTappedCell: Bool)
 }
 
 class InfinitePagingCollectionView: UICollectionView {
@@ -48,7 +48,8 @@ class InfinitePagingCollectionView: UICollectionView {
         setup()
         // 初期表示時にはスクロール系のDelegateメソッドが発火しないので
         // ここでindex0のぺセルが表示されていることをdelegateに伝える
-        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: 0, isSwipeToRight: false)
+        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: 0,
+                                                              isSwipeToRight: false, isTappedCell: false)
     }
     
     func moveToCenter() {
@@ -132,7 +133,7 @@ extension InfinitePagingCollectionView: UICollectionViewDataSource {
         let index = indexPath.row % pagingSubviews.count
         let cell = dequeueReusableCell(withReuseIdentifier: InfinitePagingViewCell.identifier,
                                        for: indexPath) as! InfinitePagingViewCell
-        cell.configure(with: pagingSubviews[index])
+        cell.configure(with: pagingSubviews[index], index: index, delegate: self)
         return cell
     }
 }
@@ -168,7 +169,7 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
         let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
         let isScrollToRight = translation.x > 0
         infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex,
-                                                              isSwipeToRight: isScrollToRight)
+                                                              isSwipeToRight: isScrollToRight, isTappedCell: false)
         
         guard pagingType == .adjustable else { return }
         let adjustedOffset = getCenterOffset(from: scrollView.contentOffset.x)
@@ -182,7 +183,7 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
             let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
             let isScrollToRight = translation.x > 0
             infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: currentPageIndex,
-                                                                  isSwipeToRight: isScrollToRight)
+                                                                  isSwipeToRight: isScrollToRight, isTappedCell: false)
         }
         
         guard pagingType == .adjustable else { return }
@@ -192,10 +193,29 @@ extension InfinitePagingCollectionView: UIScrollViewDelegate {
     }
 }
 
+extension InfinitePagingCollectionView: InfinitePagingViewCellDelegate {
+    func didTapCell(sender: UICollectionViewCell, index: Int) {
+        let currentCenterOffsetX = contentOffset.x + inScreenOffsetX
+        let newIndexOffsetX = sender.frame.minX
+        let isScrollToRight = currentCenterOffsetX > newIndexOffsetX
+        infinitePagingCollectionViewDelegate?.didEndScrolling(collectionView: self, index: index,
+                                                              isSwipeToRight: isScrollToRight, isTappedCell: true)
+    }
+}
+
+protocol InfinitePagingViewCellDelegate: class {
+    func didTapCell(sender: UICollectionViewCell, index: Int)
+}
+
 class InfinitePagingViewCell: UICollectionViewCell {
     static let identifier = "InfinitePagingViewCell"
+    private weak var delegate: InfinitePagingViewCellDelegate?
+    private var subviewIndex = 0
     
-    func configure(with childView: UIView) {
+    func configure(with childView: UIView, index: Int, delegate: InfinitePagingViewCellDelegate) {
+        self.delegate = delegate
+        subviewIndex = index
+        childView.addGestureRecognizer(didTapCellGesture)
         addSubview(childView)
     }
     
@@ -203,5 +223,15 @@ class InfinitePagingViewCell: UICollectionViewCell {
         subviews.forEach { subview in
             subview.removeFromSuperview()
         }
+    }
+    
+    private var didTapCellGesture: UITapGestureRecognizer {
+        let gesture = UITapGestureRecognizer(target: self, action:#selector(didTapCell))
+        gesture.cancelsTouchesInView = false
+        return gesture
+    }
+    
+    @objc private func didTapCell() {
+        delegate?.didTapCell(sender: self, index: subviewIndex)
     }
 }
