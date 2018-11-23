@@ -22,6 +22,8 @@ class InfinitePagingViewController: UIViewController {
             let vc = getDummyView(title: "ライフスタイル\(i)")
             subviewControllers.append(vc)
         }
+        // setMoveBarViewを呼び出すタイミングでindex0で表示される
+        // ヘッダービューのタイトルのwidthが分かれば引数として渡して上げる
         setMoveBarView()
         setHeaderView()
         setBodyView()
@@ -32,14 +34,21 @@ class InfinitePagingViewController: UIViewController {
         // ヘッダービューコレクションビューはデフォルトで左寄せのレイアウトになるのでセンターに移動させる
         headerView.moveToCenter()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            moveBarView.center = CGPoint(x: headerView.center.x, y: headerView.frame.maxY - moveBarView.frame.height/2)
+            moveBarView.layoutIfNeeded()
+        }
+    }
 }
 
 private extension InfinitePagingViewController {
     func setMoveBarView() {
         moveBarView = UIView()
         moveBarView.frame.size = CGSize(width: 100, height: 2)
-        moveBarView.center = CGPoint(x: headerView.center.x,
-                                     y: headerView.frame.maxY - moveBarView.frame.height/2)
+        moveBarView.center = CGPoint(x: headerView.center.x, y: headerView.frame.maxY - moveBarView.frame.height/2)
         moveBarView.backgroundColor = .blue
         view.addSubview(moveBarView)
     }
